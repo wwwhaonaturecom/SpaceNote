@@ -8,7 +8,7 @@
 <script type="text/javascript" src="tools.js"></script>
 <script type="text/javascript" src="msgbox.js"></script>
 <script type="text/javascript" src="coordtools.js"></script>
-<title>Hello, World</title>  
+<title>SpaceNote alpha</title>  
 <style type="text/css">  
 	html{height:100%}  
 	body{height:100%;margin:0px;padding:0px}  
@@ -62,6 +62,8 @@
 </head>  
 <body>  
 <div id="container"></div> 
+<div style="top:0px; position:absolute;"><h1 onclick="login_show">登录按钮</h1><h1 id="alert"></h1></div>
+
 <!-- 函数 -->
 <script type="text/javascript">
 	function newMsgbox(map, center, width, height, text, imgsrc){
@@ -186,7 +188,6 @@
 
 </script>
 
-
 <!-- 主程序 -->
 <script type="text/javascript">
 	//设置一个坐标点对象
@@ -222,6 +223,10 @@
 	newMsgbox(map,point2,100 ,100,"测试","3.png");
 	map.setCenter(result);
 	map.panTo(result);
-</script>  
+
+	getLocation();
+	alert(position);
+</script> 
+
 </body>  
 </html>

@@ -1,4 +1,20 @@
 //*****所有工具函数*****//
+var position = null;
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(updatePosition);
+    } else {
+        position = null;
+    }
+}
+
+function updatePosition(pos) {
+    position = pos;
+    var h1 = document.getElementById("alert");
+    if(h1 != null && pos != null)
+        h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
+}
 
 function setLocation(){
     if (navigator.geolocation && map != null) 
