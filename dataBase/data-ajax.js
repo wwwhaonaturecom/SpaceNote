@@ -26,11 +26,11 @@ function loadData(Lng, Lat, Rng, Ref = false) { //Rng为距离中心点的距离
         success: function(data,status){
             jsonData = eval(data);      //将data字符串转换为json数组            
             //将数据插入地图时只需要遍历jsonData 替换下面这段代码
-            var Bpoint, mySquare;
+            var Bpoint, msgbox;
 	        $.each(jsonData,function(index,elem){
 		        Bpoint = new BMap.Point(data[index].Lng, data[index].Lat);
-		        mySquare = new SquareOverlay(Bpoint, 100, 50, data[index].Note, "1.jpg" );    
-		        map.addOverlay(mySquare);
+		        msgbox = new Msgbox(Bpoint, 100, 50, data[index].Note, "1.jpg" );    
+		        map.addOverlay(msgbox);
 	        })
             // //
             // $(".nearby-data").empty();
