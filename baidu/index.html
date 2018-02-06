@@ -4,11 +4,18 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
+
 <script src="../dataBase/data-ajax.js"></script>
-<script type="text/javascript" src="tools.js"></script>
-<script type="text/javascript" src="msgbox.js"></script>
-<script type="text/javascript" src="coordtools.js"></script>
+<script type="text/javascript" src="js/tools.js"></script>
+<script type="text/javascript" src="js/msgbox.js"></script>
+<script type="text/javascript" src="js/coordtools.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/login.css">
+
 <title>SpaceNote alpha</title>  
+
 <style type="text/css">  
 	html{height:100%}  
 	body{height:100%;margin:0px;padding:0px}  
@@ -42,7 +49,7 @@
 		/*width: 200px;*/
 		/*height: 145px;*/
 		background-color: white;
-		border-radius: 10px;
+		border-radius: 5px;
 		box-shadow: 0px 0px 20px 5px #888888;
 	}
 
@@ -55,14 +62,50 @@
 		top: 10px;
 		font-size: small;
 	}
+
+	.overlay{
+		position: absolute;
+		top: 0px;
+
+	}
 </style>  
-<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW">
-//v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
+
 </script>
 </head>  
 <body>  
 <div id="container"></div> 
-<div style="top:0px; position:absolute;"><h1 onclick="login_show">登录按钮</h1><h1 id="alert"></h1></div>
+
+<!-- 模糊背景 -->
+<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;"></div>
+
+<div class="overlay">
+	<h1 onclick="login_show()">登录按钮</h1>
+	<h1 id="alert"></h1>
+</div>
+
+<div id="loginWindow" class="overlay login" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;">
+	<div class="login-screen" style="position: relative;top: 50%;margin-top: -150px;">
+		<div class="app-title">
+			<h1>登录</h1>
+		</div>
+
+		<div class="login-form">
+			<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="用户名" id="login-name">
+				<label class="login-field-icon fui-user" for="login-name"></label>
+			</div>
+
+			<div class="control-group">
+				<input type="password" class="login-field" value="" placeholder="密码" id="login-pass">
+				<label class="login-field-icon fui-lock" for="login-pass"></label>
+			</div>
+
+			<a class="btn btn-primary btn-large btn-block" href="#">登录</a>
+			<a class="btn btn-primary btn-large btn-block" style="background-color: white;border-style: solid;border-color: #3498DB;border-width: 2px;color: #3498DB;margin-top: 10px; " href="#">注册</a>
+			<a class="login-link" href="#">忘记密码</a>
+		</div>
+	</div>
+</div>
 
 <!-- 函数 -->
 <script type="text/javascript">
@@ -216,16 +259,15 @@
 	loadData(center.Lng, center.Lat, range); //加载数据点
 
 	//
-	newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","1.png");
+	newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
 	var result = convertPointG2B(Bcenter);
-	newMsgbox(map,result,100 ,100,"转换坐标（BD）","2.png");
+	newMsgbox(map,result,100 ,100,"转换坐标（BD）","res/2.png");
 	var point2 = BMap.Point(result.lng+0.1,result.lat+0.1);
-	newMsgbox(map,point2,100 ,100,"测试","3.png");
+	newMsgbox(map,point2,100 ,100,"测试","res/3.png");
 	map.setCenter(result);
 	map.panTo(result);
 
 	getLocation();
-	alert(position);
 </script> 
 
 </body>  
