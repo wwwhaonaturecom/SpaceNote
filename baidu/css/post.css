@@ -3,9 +3,13 @@
 	padding: 20px;
 	border-radius: 5px;
 	width: 340px;
+	height: 360px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
+	position: relative;
+	top: 50%;
+	margin-top: -180px;
 }
 
 .post-input {
