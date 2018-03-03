@@ -17,8 +17,10 @@
 <title>SpaceNote alpha</title>  
 
 <style type="text/css">  
-	html{height:100%}  
-	body{height:100%;margin:0px;padding:0px}  
+	html{height:100%;}  
+	body{height:100%;margin:0px;padding:0px;}  
+	span{z-index: 1000 !important;}
+
 	#container{height:100%}  
 
 	.circle{
@@ -66,7 +68,14 @@
 	.overlay{
 		position: absolute;
 		top: 0px;
+		height: 100%;
+		width: 100%;
+	}
 
+	.login_btn{
+		position: absolute;
+		bottom: 20px;
+		right: 20px;
 	}
 </style>  
 
@@ -75,17 +84,18 @@
 <body>  
 <div id="container"></div> 
 
-<!-- 模糊背景 -->
-<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;"></div>
 
-<div class="overlay">
-	<h1 onclick="login_show()">登录按钮</h1>
-	<h1 id="alert"></h1>
-</div>
+
+<h1  class="login_btn" onclick="login_show()">登录按钮</h1>
+<h1 id="alert"></h1>
+
+<!-- 模糊背景 -->
+<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;" onclick="login_hide()"></div>
 
 <div id="loginWindow" class="overlay login" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;">
 	<div class="login-screen" style="position: relative;top: 50%;margin-top: -150px;">
 		<div class="app-title">
+
 			<h1>登录</h1>
 		</div>
 
@@ -116,8 +126,8 @@
 
 
 	// 定义自定义覆盖物的构造函数  
-	function Msgbox(center, width, height, text, imgsrc){
-	    this._center = center;
+	function Msgbox(point, width, height, text, imgsrc){
+	    this._point = point;
 	    this._width = width;
 	    this._height = height;
 	    this._text = text;
@@ -133,6 +143,10 @@
 	    // 创建div元素，作为自定义覆盖物的容器
 	    var div = document.createElement("div");
 	    div.style.position = "absolute"; 
+	    // div.style.zIndex = "999"; 
+	    div.onclick = function(){
+	    	alert('success');
+	    };
 
 
 	    var img = document.createElement("img");
@@ -191,10 +205,12 @@
 	// 实现绘制方法   
 	Msgbox.prototype.draw = function(){    
 	// 根据地理坐标转换为像素坐标，并设置给容器    
-	    var position = this._map.pointToOverlayPixel(this._center);    
-	    if(position == undefined)return
-	    this._div.style.left = position.x - this._length / 2 + "px";    
-	    this._div.style.top = position.y - this._length / 2 + "px";    
+      var map = this._map;
+      var pixel = map.pointToOverlayPixel(this._point);
+      this._div.style.left = pixel.x - 32 + "px";
+      // 
+      this._div.style.top  = pixel.y - parseInt(this._div.style.height) - 39  + "px";    
+
 	}
 
 	// 实现显示方法    
@@ -260,9 +276,13 @@
 
 	//
 	newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
+	var marker2 = new BMap.Marker(Bcenter);
+	map.addOverlay(marker2);
 	var result = convertPointG2B(Bcenter);
 	newMsgbox(map,result,100 ,100,"转换坐标（BD）","res/2.png");
-	var point2 = BMap.Point(result.lng+0.1,result.lat+0.1);
+	var marker = new BMap.Marker(result);
+	map.addOverlay(marker);
+	var point2 = new BMap.Point(result.lng+0.1,result.lat+0.1);
 	newMsgbox(map,point2,100 ,100,"测试","res/3.png");
 	map.setCenter(result);
 	map.panTo(result);
