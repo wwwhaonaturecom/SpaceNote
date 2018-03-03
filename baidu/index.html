@@ -13,6 +13,9 @@
 <script type="text/javascript" src="js/login.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/login.css">
+<link rel="stylesheet" type="text/css" href="css/post.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 <title>SpaceNote alpha</title>  
 
@@ -72,10 +75,31 @@
 		width: 100%;
 	}
 
-	.login_btn{
+	.bottom_btn{
 		position: absolute;
 		bottom: 20px;
 		right: 20px;
+		display:flex !important;/*Flex布局*/
+    	display: -webkit-flex; /* Safari */
+    	align-items: center;/*指定垂直居中*/
+    	flex-direction: column;
+	}
+
+	.post_btn{
+		position: absolute;
+		bottom: 
+	}
+
+	.material-icons.md-18 { font-size: 18px; }
+	.material-icons.md-24 { font-size: 24px; }
+	.material-icons.md-36 { font-size: 36px; }
+	.material-icons.md-48 { font-size: 48px; }
+	.material-icons.md-blue { 
+		color: #3498DB;
+		background-color: white;
+		border-radius: 50%;
+		margin-bottom: 10px;
+		box-shadow: 0px 0px 4px 2px #DDDDDD;
 	}
 </style>  
 
@@ -84,13 +108,16 @@
 <body>  
 <div id="container"></div> 
 
+<div class="bottom_btn">
+	<i class="material-icons md-48 md-blue" onclick="post_show()">add_circle</i>
+	<i class="material-icons md-48 md-blue" onclick="login_show()">account_circle</i>
 
+</div>
 
-<h1  class="login_btn" onclick="login_show()">登录按钮</h1>
 <h1 id="alert"></h1>
 
 <!-- 模糊背景 -->
-<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;" onclick="login_hide()"></div>
+<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;" onclick="hide_all()"></div>
 
 <div id="loginWindow" class="overlay login" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;">
 	<div class="login-screen" style="position: relative;top: 50%;margin-top: -150px;">
@@ -101,18 +128,30 @@
 
 		<div class="login-form">
 			<div class="control-group">
-				<input type="text" class="login-field" value="" placeholder="用户名" id="login-name">
+				<input type="text" class="login-input login-field" value="" placeholder="用户名" id="login-name">
 				<label class="login-field-icon fui-user" for="login-name"></label>
 			</div>
 
 			<div class="control-group">
-				<input type="password" class="login-field" value="" placeholder="密码" id="login-pass">
+				<input type="password" class="login-input login-field" value="" placeholder="密码" id="login-pass">
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
 			</div>
 
 			<a class="btn btn-primary btn-large btn-block" href="#">登录</a>
 			<a class="btn btn-primary btn-large btn-block" style="background-color: white;border-style: solid;border-color: #3498DB;border-width: 2px;color: #3498DB;margin-top: 10px; " href="#">注册</a>
 			<a class="login-link" href="#">忘记密码</a>
+		</div>
+
+
+	</div>
+</div>
+<div id="postWindow" class="overlay login" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;">
+	<div class="post-screen">
+		<div class="control-group"> 
+			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
+		</div>
+		<div class="control-group">
+			<a class="btn btn-primary btn-large btn-block" href="#">发布</a>
 		</div>
 	</div>
 </div>

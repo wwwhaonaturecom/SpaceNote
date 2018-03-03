@@ -13,15 +13,3 @@ function login_show() {
 	}
 }
 
-function login_hide(){
-		var loginWindow = document.getElementById("loginWindow");
-	var blurOverlay = document.getElementById("blurOverlay");
-	if(loginWindow.style.visibility == 'hidden'){
-		loginWindow.style.visibility = 'visible';
-		blurOverlay.style.visibility = 'visible';
-	}
-	else{
-		loginWindow.style.visibility = 'hidden';
-		blurOverlay.style.visibility = 'hidden';
-	}
-}

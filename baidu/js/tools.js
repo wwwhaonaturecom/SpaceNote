@@ -56,3 +56,14 @@ function setLocation(){
     }
 }
 
+function hide_all(){
+    var loginWindow = document.getElementById("loginWindow");
+    var blurOverlay = document.getElementById("blurOverlay");
+    var postWindow = document.getElementById("postWindow");
+    var btns = document.getElementsByClassName("btn-block");
+    loginWindow.style.visibility = 'hidden';
+    blurOverlay.style.visibility = 'hidden';
+    postWindow.style.visibility = 'hidden';
+    btns.style.visibility = 'hidden';
+}
+

@@ -1,0 +1,27 @@
+.post-screen {
+	background-color: #FFF;
+	padding: 20px;
+	border-radius: 5px;
+	width: 340px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.post-input {
+text-align: left;
+background-color: #ECF0F1;
+border: 2px solid transparent;
+border-radius: 3px;
+font-size: 16px;
+font-weight: 200;
+padding: 10px 5px;
+width: 250px;
+height: 250px;
+transition: border .5s;
+}
+
+.post-input:focus {
+border: 2px solid #3498DB;
+box-shadow: none;
+}
