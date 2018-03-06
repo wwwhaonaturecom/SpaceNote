@@ -21,40 +21,25 @@ function loadData(Lng, Lat, Rng, Ref = false) { //Rng为距离中心点的距离
         url: downloadURL,        
         type: "get",
         dataType: "json",
-        async: true,
+        async: false,
         data: "Longitude="+Lng+"&Latitude="+Lat+"&Range="+Rng,
         success: function(data,status){
             jsonData = eval(data);      //将data字符串转换为json数组            
             //将数据插入地图时只需要遍历jsonData 替换下面这段代码
-            var Bpoint, msgbox;
-	        $.each(jsonData,function(index,elem){
-		        Bpoint = new BMap.Point(data[index].Lng, data[index].Lat);
-		        msgbox = new Msgbox(Bpoint, 100, 50, data[index].Note, "1.jpg" );    
-		        map.addOverlay(msgbox);
-	        })
-            // //
-            // $(".nearby-data").empty();
-            // $(".nearby-data").append("<tr><th>UID</th><th>Uname</th><th>Note</th><th>Lng</th><th>Lat</th><th>Alt</th><th>Time</th></tr>");
             
-            // $.each(jsonData,function(index,elem){
-            //     $(".nearby-data").append("<tr>");
-            //     $(".nearby-data").append("<td>" + jsonData[index].UID + "</td>");
-            //     $(".nearby-data").append("<td>" + jsonData[index].Uname + "</td>");
-            //     $(".nearby-data").append("<td>" + jsonData[index].Note + "</td>");
-            //     $(".nearby-data").append("<td>" + jsonData[index].Lng + "</td>");
-            //     $(".nearby-data").append("<td>" + jsonData[index].Lat + "</td>");
-            //     $(".nearby-data").append("<td>" + jsonData[index].Alt + "</td>");
-            //     $(".nearby-data").append("<td>" + jsonData[index].Time + "</td>");
-            //     $(".nearby-data").append("</tr>");
-            // })
-            //        
+            // var Bpoint, msgbox;
+	        // $.each(jsonData,function(index,elem){
+		    //     Bpoint = new BMap.Point(data[index].Lng, data[index].Lat);
+		    //     msgbox = new Msgbox(Bpoint, 100, 50, data[index].Note, "1.jpg" );    
+		    //     map.addOverlay(msgbox);
+	        // })     
         },
         error: function (XMLHttpRequest, textStatus, errorThrown){
             $(".nearby-data").append("<tr><td>status:" + XMLHttpRequest.status + "</td><td>" + textStatus + "</td></tr>");    
         }
     });
 
-    
+    return jsonData;    
     // xmlhttp.open("GET", downloadURL + "?Longitude=" + Lng + "&Latitude=" + Lat + "&sid=" + Math.random(), true);
     // xmlhttp.send();
 }
@@ -64,7 +49,7 @@ function uploadData(UID, Uname, Note, Lng, Lat, Alt) {
     $.ajax({
         url: uploadURL,        
         type: "post",
-        async: true,
+        async: false,
         data: {"UID": UID, "Uname": Uname,"Note" : Note, "Lng": Lng, "Lat": Lat, "Alt": Alt},
         success: function(result){
             alert(result);
