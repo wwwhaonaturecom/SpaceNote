@@ -95,6 +95,7 @@
 	.material-icons.md-36 { font-size: 36px; }
 	.material-icons.md-48 { font-size: 48px; }
 	.material-icons.md-blue { 
+		overflow: hidden; 
 		color: #3498DB;
 		background-color: white;
 		border-radius: 50%;
@@ -145,7 +146,7 @@
 
 	</div>
 </div>
-<div id="postWindow" class="overlay login-window" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;">
+<div id="postWindow" class="overlay post-window" style="visibility: hidden;margin: auto;top: 0px;left: 0px;right: 0px;bottom: 0px;">
 	<div class="post-screen">
 		<div class="control-group"> 
 			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
@@ -311,8 +312,8 @@
 	
 	// 添加自定义覆盖物  
 	var range = 1;//设置范围
-	loadData(center.Lng, center.Lat, range); //加载数据点
-
+	var data = loadData(center.Lng, center.Lat, range); //加载数据点
+	alert(data);
 	//
 	newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
 	var marker2 = new BMap.Marker(Bcenter);
