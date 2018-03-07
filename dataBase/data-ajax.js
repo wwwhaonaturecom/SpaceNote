@@ -27,18 +27,6 @@ function loadData(Lng, Lat, Rng, Ref = false) { //Rng为距离中心点的距离
             jsonData = eval(data);          //将data字符串转换为json数组       
                        
             //将数据插入地图时只需要遍历jsonData 替换下面这段代码
-<<<<<<< HEAD
-            //var Bpoint, msgbox;
-	        // $.each(jsonData,function(index,elem){
-		       //  Bpoint = new BMap.Point(data[index].Lng, data[index].Lat);
-		       //  msgbox = new Msgbox(Bpoint, 100, 50, data[index].Note, "1.jpg" );    
-		       //  map.addOverlay(msgbox);
-	        // })
-            // //
-            // $(".nearby-data").empty();
-            // $(".nearby-data").append("<tr><th>UID</th><th>Uname</th><th>Note</th><th>Lng</th><th>Lat</th><th>Alt</th><th>Time</th></tr>");
-=======
->>>>>>> 95edcff21bbf48b58463ae6f6ebc0571cee26a07
             
             // var Bpoint, msgbox;
 	        // $.each(jsonData,function(index,elem){
@@ -51,13 +39,8 @@ function loadData(Lng, Lat, Rng, Ref = false) { //Rng为距离中心点的距离
             $(".nearby-data").append("<tr><td>status:" + XMLHttpRequest.status + "</td><td>" + textStatus + "</td></tr>");    
         }
     });
-<<<<<<< HEAD
     return jsonData;
     
-=======
-
-    return jsonData;    
->>>>>>> 95edcff21bbf48b58463ae6f6ebc0571cee26a07
     // xmlhttp.open("GET", downloadURL + "?Longitude=" + Lng + "&Latitude=" + Lat + "&sid=" + Math.random(), true);
     // xmlhttp.send();
 }
