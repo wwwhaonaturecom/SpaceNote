@@ -119,8 +119,8 @@
 <!-- 模糊背景 -->
 <div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;" onclick="hide_all()"></div>
 
-<div id="loginWindow" class="overlay login-window" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;">
-	<div class="login-screen">
+<div id="loginWindow" class="overlay login-window" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;" onclick="hide_all()">
+	<div class="login-screen" onclick="stopPropagation(event)">
 		<div class="app-title">
 
 			<h1>登录</h1>
@@ -145,8 +145,8 @@
 
 	</div>
 </div>
-<div id="postWindow" class="overlay post-window" style="visibility: hidden;margin: auto;top: 0px;left: 0px;right: 0px;bottom: 0px;">
-	<div class="post-screen">
+<div id="postWindow" class="overlay post-window" style="visibility: hidden;margin: auto;top: 0px;left: 0px;right: 0px;bottom: 0px;" onclick="hide_all()">
+	<div class="post-screen" onclick="stopPropagation(event)">
 		<div class="control-group"> 
 			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
 		</div>
@@ -158,6 +158,23 @@
 
 <!-- 函数 -->
 <script type="text/javascript">
+	//阻止冒泡
+	function stopPropagation(e){
+		 e.stopPropagation();
+	}
+
+	//登陆函数
+	function login(){
+
+	}
+	
+	//提交函数
+	function submit(){
+		
+	}
+
+	//////////////////////////////////
+	
 	function newMsgbox(map, center, width, height, text, imgsrc){
 		var msgbox = new Msgbox(center, width, height, text, imgsrc );
 		map.addOverlay(msgbox);
