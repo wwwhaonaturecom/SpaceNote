@@ -3,13 +3,55 @@
 function login_show() {
 	var loginWindow = document.getElementById("loginWindow");
 	var blurOverlay = document.getElementById("blurOverlay");
-	if(loginWindow.style.visibility == 'hidden'){
-		loginWindow.style.visibility = 'visible';
-		blurOverlay.style.visibility = 'visible';
+	if(sessionStorage["loginStatus"] == true){
+		if(userWindow.style.visibility == 'hidden'){
+			userWindow.style.visibility = 'visible';
+			blurOverlay.style.visibility = 'visible';
+		}
+		else {
+			userWindow.style.visibility = 'hidden';
+			blurOverlay.style.visibility = 'hidden';
+		}
 	}
-	else{
-		loginWindow.style.visibility = 'hidden';
-		blurOverlay.style.visibility = 'hidden';
+	else {
+		if (loginWindow.style.visibility == 'hidden') {
+			loginWindow.style.visibility = 'visible';
+			blurOverlay.style.visibility = 'visible';
+		}
+		else {
+			loginWindow.style.visibility = 'hidden';
+			blurOverlay.style.visibility = 'hidden';
+		}
 	}
+}
+
+function login() {
+	var Uname = document.getElementById("login-name");
+	var Upass = document.getElementById("login-pass");
+	var errMsg;
+	var isError = true;
+
+	//验证输入部分
+
+	//服务端验证部分
+	// $.ajax({
+	// 	url: "../dataBase/login.php",
+	// 	type: post,
+	// 	data: {"Uname": Uname, "Upass": Upass},
+	// 	success: function(result,status) {
+	// 		if(result == true)
+	// 			sessionStorage["loginStatus"] = true;
+	// 		else {
+	// 			sessionStorage["loginStatus"] = false;
+	// 			errMsg = "用户名或密码错误";
+	// 		}
+	// 	},
+	// 	error: function (XMLHttpRequest, textStatus, errorThrown){
+    //         alert(textStatus);
+    //     }
+	// })
+
+	sessionStorage["loginStatus"] = true;
+
 }
 

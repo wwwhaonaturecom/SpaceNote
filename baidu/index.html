@@ -30,7 +30,7 @@
 		width: 50px;
 		height: 50px;
 		background-color: yellow;
-		border-radius: 50%
+		border-radius: 50%;
 		-moz-border-radius: 50%;
 		-webkit-border-radius: 50%;
 		box-shadow: 0px 0px 4px 2px #DDDDDD;
@@ -128,16 +128,16 @@
 
 		<div class="login-form">
 			<div class="control-group">
-				<input type="text" class="login-input login-field" value="" placeholder="用户名" id="login-name">
+				<input type="text" class="login-input login-field" placeholder="用户名" id="login-name">
 				<label class="login-field-icon fui-user" for="login-name"></label>
 			</div>
 
 			<div class="control-group">
-				<input type="password" class="login-input login-field" value="" placeholder="密码" id="login-pass">
+				<input type="password" class="login-input login-field" placeholder="密码" id="login-pass">
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
 			</div>
 
-			<a class="btn btn-primary btn-large btn-block" href="#">登录</a>
+			<a class="btn btn-primary btn-large btn-block" href="#" onclick="login()">登录</a>
 			<a class="btn btn-primary btn-large btn-block" style="background-color: white;border-style: solid;border-color: #3498DB;border-width: 2px;color: #3498DB;margin-top: 10px; " href="#">注册</a>
 			<a class="login-link" href="#">忘记密码</a>
 		</div>
@@ -156,6 +156,19 @@
 	</div>
 </div>
 
+<div id="userWindow" class="overlay" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;" onclick="hide_all()">
+	<div class="user-screen" onclick="stopPropagation(event)">
+		<div class="control-group"> 
+			<div class="circle">
+				<img class="heading" src="res/default.jpg" alt="用户头像">
+			</div>
+		</div>
+		<div class="control-group">
+			<a class="btn btn-primary btn-large btn-block" href="#">注销</a>
+		</div>
+	</div>
+</div>
+
 <!-- 函数 -->
 <script type="text/javascript">
 	//阻止冒泡
@@ -163,17 +176,6 @@
 		 e.stopPropagation();
 	}
 
-	//登陆函数
-	function login(){
-
-	}
-	
-	//提交函数
-	function submit(){
-		
-	}
-
-	//////////////////////////////////
 	
 	function newMsgbox(map, center, width, height, text, imgsrc){
 		var msgbox = new Msgbox(center, width, height, text, imgsrc );
