@@ -52,6 +52,8 @@ function login() {
 	// })
 
 	sessionStorage["loginStatus"] = true;
-
+	sessionStorage["Uname"] = Uname;
+	//插入欢迎页面
+	$(p.welcome).html("你好！"+Uname);
 }
 
