@@ -264,7 +264,7 @@
       var map = this._map;
       var pixel = map.pointToOverlayPixel(this._point);
       this._div.style.left = pixel.x - 32 + "px";
-      // 
+      // 通过精确的计算得到的32和39
       this._div.style.top  = pixel.y - parseInt(this._div.style.height) - 39  + "px";    
 
 	}
@@ -292,6 +292,61 @@
             }    
         }    
     }
+
+    ///////////////////////////////////////
+    ///            customPoint              ///
+    ///          支持自定义div           ///
+    ///////////////////////////////////////
+    function customPoint(point,div){
+    	this._point = point
+    	this._div = div
+    }
+
+    customPoint.prototype = new BMap.Overlay();
+	// 实现初始化方法  
+	customPoint.prototype.initialize = function(map){
+	    // 保存map对象实例
+	    this._map = map;
+
+	    return this._div;
+	}
+
+	// 实现绘制方法   
+	customPoint.prototype.draw = function(){    
+	// 根据地理坐标转换为像素坐标，并设置给容器    
+      var map = this._map;
+      var pixel = map.pointToOverlayPixel(this._point);
+      this._div.style.left = pixel.x + "px";
+      // 
+      this._div.style.top  = pixel.y - parseInt(this._div.style.height) + "px";    
+
+	}
+
+	// 实现显示方法    
+	customPoint.prototype.show = function(){    
+	    if (this._div){    
+	        this._div.style.display = "";    
+	    }    
+	}      
+	// 实现隐藏方法  
+	customPoint.prototype.hide = function(){    
+	    if (this._div){    
+	        this._div.style.display = "none";    
+	    }    
+	}
+    // 添加自定义方法   
+    customPoint.prototype.toggle = function() {    
+        if (this._div) {    
+            if (this._div.style.display == "") {    
+                this.hide();    
+            }    
+            else {    
+                this.show();    
+            }    
+        }    
+    }
+
+    ////////////////////////////////////////////
 
 
 	function convertPointG2B(Gpoint) {
@@ -357,7 +412,7 @@
 	
 
 
-
+	
 	getLocation();
 </script> 
 

@@ -1,5 +1,7 @@
 //*****所有工具函数*****//
 var position = null;
+var myPoint = new customPoint(postion,myPointDiv)
+map.addOverlay(myPoint)
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -14,6 +16,7 @@ function updatePosition(pos) {
     var h1 = document.getElementById("alert");
     if(h1 != null && pos != null)
         h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
+
 }
 
 function setLocation(){
