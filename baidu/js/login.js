@@ -1,5 +1,4 @@
 //*****和登录有关的函数******//
-
 function login_show() {
 	var loginWindow = document.getElementById("loginWindow");
 	var blurOverlay = document.getElementById("blurOverlay");
@@ -26,8 +25,8 @@ function login_show() {
 }
 
 function login() {
-	var Uname = document.getElementById("login-name");
-	var Upass = document.getElementById("login-pass");
+	var Uname = document.getElementById("login-name").value;
+	var Upass = document.getElementById("login-pass").value;
 	var errMsg;
 	var isError = true;
 
@@ -54,6 +53,6 @@ function login() {
 	sessionStorage["loginStatus"] = true;
 	sessionStorage["Uname"] = Uname;
 	//插入欢迎页面
-	$(p.welcome).html("你好！"+Uname);
+	$("p.welcome").html("你好！"+Uname);
 }
 
