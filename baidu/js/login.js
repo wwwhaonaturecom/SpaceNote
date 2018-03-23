@@ -3,6 +3,8 @@ function login_show() {
 	var loginWindow = document.getElementById("loginWindow");
 	var blurOverlay = document.getElementById("blurOverlay");
 	var userWindow = document.getElementById("userWindow");
+	
+	//如果已登陆，则显示用户欢迎界面
 	if(sessionStorage["loginStatus"] == "true"){
 		if(userWindow.style.visibility == 'hidden'){
 			userWindow.style.visibility = 'visible';
@@ -66,7 +68,14 @@ function login() {
 }
 
 function logout() {
+	var blurOverlay = document.getElementById("blurOverlay");
+	var userWindow = document.getElementById("userWindow");
+
 	sessionStorage.removeItem("loginStatus");
 	sessionStorage.removeItem("Uname");
+	sessionStorage.setItem("Uname", Uname);
+
+	userWindow.style.visibility = 'hidden';
+	blurOverlay.style.visibility = 'hidden';
 }
 
