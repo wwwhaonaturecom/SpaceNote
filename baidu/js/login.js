@@ -2,6 +2,7 @@
 function login_show() {
 	var loginWindow = document.getElementById("loginWindow");
 	var blurOverlay = document.getElementById("blurOverlay");
+	
 	if(sessionStorage["loginStatus"] == true){
 		if(userWindow.style.visibility == 'hidden'){
 			userWindow.style.visibility = 'visible';
