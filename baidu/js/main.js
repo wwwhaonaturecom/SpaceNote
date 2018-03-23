@@ -1,3 +1,12 @@
+//已登陆后的欢迎文字
+function welcome() {
+    var Uname;
+    if(sessionStorage["loginStatus"] == "true") {
+        Uname = sessionStorage["Unmae"];
+        $("p.welcome").html("你好！"+Uname);
+    }
+}
+welcome();  //调用
 
 //阻止冒泡
 function stopPropagation(e) {
