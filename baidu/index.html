@@ -137,7 +137,7 @@
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
 			</div>
 
-			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)" onclick="login()">登录</a>
+			<a class="btn btn-primary btn-large btn-block" href="#" onclick="login()">登录</a>
 			<a class="btn btn-primary btn-large btn-block" style="background-color: white;border-style: solid;border-color: #3498DB;border-width: 2px;color: #3498DB;margin-top: 10px; " href="#">注册</a>
 			<a class="login-link" href="#">忘记密码</a>
 		</div>
@@ -151,7 +151,7 @@
 			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
 		</div>
 		<div class="control-group">
-			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)">发布</a>
+			<a class="btn btn-primary btn-large btn-block" href="#">发布</a>
 		</div>
 	</div>
 </div>
@@ -351,6 +351,10 @@
         }    
     }
 
+    customPoint.prototype.updatePoint = function(point){
+    	this._point = point;
+    }
+
     ////////////////////////////////////////////
 
 
@@ -360,6 +364,25 @@
 		var Bpoint = new BMap.Point(Bpoint_arr[0],Bpoint_arr[1]);
 		return Bpoint ;
 	}
+
+
+	function getLocation() {
+	    if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(updatePosition);
+	    } else {
+	        position = null;
+	    }
+	}
+
+	function updatePosition(pos) {
+	    position = pos;
+	    myPoint.updatePoint(pos);
+	    var h1 = document.getElementById("alert");
+	    if(h1 != null && pos != null)
+	        h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
+
+	}
+
 
 </script>
 
@@ -416,8 +439,10 @@
 
 	
 
+	var position = null;
 
-	
+	var myPoint = new customPoint(postion,myPointDiv)
+	map.addOverlay(myPoint)
 	getLocation();
 </script> 
 
