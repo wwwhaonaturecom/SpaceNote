@@ -1,9 +1,9 @@
 //*****和登录有关的函数******//
-
 function login_show() {
 	var loginWindow = document.getElementById("loginWindow");
 	var blurOverlay = document.getElementById("blurOverlay");
-	if(sessionStorage["loginStatus"] == true){
+	var userWindow = document.getElementById("userWindow");
+	if(sessionStorage["loginStatus"] == "true"){
 		if(userWindow.style.visibility == 'hidden'){
 			userWindow.style.visibility = 'visible';
 			blurOverlay.style.visibility = 'visible';
@@ -26,8 +26,8 @@ function login_show() {
 }
 
 function login() {
-	var Uname = document.getElementById("login-name");
-	var Upass = document.getElementById("login-pass");
+	var Uname = document.getElementById("login-name").value;
+	var Upass = document.getElementById("login-pass").value;
 	var errMsg;
 	var isError = true;
 
@@ -40,9 +40,9 @@ function login() {
 	// 	data: {"Uname": Uname, "Upass": Upass},
 	// 	success: function(result,status) {
 	// 		if(result == true)
-	// 			sessionStorage["loginStatus"] = true;
+	// 			sessionStorage.setItem("loginStatus", true);
 	// 		else {
-	// 			sessionStorage["loginStatus"] = false;
+	// 			sessionStorage.setItem("loginStatus", false);
 	// 			errMsg = "用户名或密码错误";
 	// 		}
 	// 	},
@@ -51,9 +51,17 @@ function login() {
     //     }
 	// })
 
-	sessionStorage["loginStatus"] = true;
-	sessionStorage["Uname"] = Uname;
+	sessionStorage.setItem("loginStatus", "true");
+	sessionStorage.setItem("Uname", Uname);
+	if (loginWindow.style.visibility == 'hidden') {
+		loginWindow.style.visibility = 'visible';
+		blurOverlay.style.visibility = 'visible';
+	}
+	else {
+		loginWindow.style.visibility = 'hidden';
+		blurOverlay.style.visibility = 'hidden';
+	}
 	//插入欢迎页面
-	$(p.welcome).html("你好！"+Uname);
+	$("p.welcome").html("你好！"+Uname);
 }
 
