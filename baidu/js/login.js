@@ -65,3 +65,8 @@ function login() {
 	$("p.welcome").html("你好！"+Uname);
 }
 
+function logout() {
+	sessionStorage.removeItem("loginStatus");
+	sessionStorage.removeItem("Uname");
+}
+
