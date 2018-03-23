@@ -3,107 +3,23 @@
 <head>  
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
-
-<script src="../dataBase/data-ajax.js"></script>
-<script type="text/javascript" src="js/tools.js"></script>
-<script type="text/javascript" src="js/msgbox.js"></script>
-<script type="text/javascript" src="js/coordtools.js"></script>
-<script type="text/javascript" src="js/login.js"></script>
-
 <link rel="stylesheet" type="text/css" href="css/login.css">
 <link rel="stylesheet" type="text/css" href="css/post.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
 <title>SpaceNote alpha</title>  
-
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
 <style type="text/css">  
 	html{height:100%;}  
 	body{height:100%;margin:0px;padding:0px;}  
 	span{z-index: 1000 !important;}
 
 	#container{height:100%}  
-
-	.circle{
-		width: 50px;
-		height: 50px;
-		background-color: yellow;
-		border-radius: 50%;
-		-moz-border-radius: 50%;
-		-webkit-border-radius: 50%;
-		box-shadow: 0px 0px 4px 2px #DDDDDD;
-		overflow: hidden;
-	}
-
-	.headimg{
-		width: 50px;
-	}
-
-	.triangle_down{
-		width: 0px;
-		height: 0px;
-		border-top: 10px solid white;
-		border-right: 10px solid transparent;
-		border-left:  10px solid transparent;
-		/*background-color: white;*/
-	}
-
-	.textbox{
-		/*width: 200px;*/
-		/*height: 145px;*/
-		background-color: white;
-		border-radius: 5px;
-		box-shadow: 0px 0px 20px 5px #888888;
-	}
-
-	.text{
-		/*width: 160px;*/
-		/*height: 125px;*/
-		margin: 0;
-		position: relative;
-		left: 20px;
-		top: 10px;
-		font-size: small;
-	}
-
-	.overlay{
-		position: absolute;
-		top: 0px;
-		height: 100%;
-		width: 100%;
-	}
-
-	.bottom_btn{
-		position: absolute;
-		bottom: 20px;
-		right: 20px;
-		display:flex !important;/*Flex布局*/
-    	display: -webkit-flex; /* Safari */
-    	align-items: center;/*指定垂直居中*/
-    	flex-direction: column;
-	}
-
-	.post_btn{
-		position: absolute;
-	}
-
-	.material-icons.md-18 { font-size: 18px; }
-	.material-icons.md-24 { font-size: 24px; }
-	.material-icons.md-36 { font-size: 36px; }
-	.material-icons.md-48 { font-size: 48px; }
-	.material-icons.md-blue { 
-		overflow: hidden; 
-		color: #3498DB;
-		background-color: white;
-		border-radius: 50%;
-		margin-bottom: 10px;
-		box-shadow: 0px 0px 4px 2px #DDDDDD;
-	}
 </style>  
 
-</script>
 </head>  
 <body>  
 <div id="container"></div> 
@@ -137,7 +53,7 @@
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
 			</div>
 
-			<a class="btn btn-primary btn-large btn-block" href="#" onclick="login()">登录</a>
+			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)" onclick="login()">登录</a>
 			<a class="btn btn-primary btn-large btn-block" style="background-color: white;border-style: solid;border-color: #3498DB;border-width: 2px;color: #3498DB;margin-top: 10px; " href="#">注册</a>
 			<a class="login-link" href="#">忘记密码</a>
 		</div>
@@ -151,13 +67,13 @@
 			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
 		</div>
 		<div class="control-group">
-			<a class="btn btn-primary btn-large btn-block" href="#">发布</a>
+			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)">发布</a>
 		</div>
 	</div>
 </div>
 
-<div id="userWindow" class="overlay" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;" onclick="hide_all()">
-	<div class="user-screen" onclick="stopPropagation(event)">
+<div class="overlay login-window" id="userWindow" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;" onclick="hide_all()">
+	<div class="user-screen login-screen" onclick="stopPropagation(event)">
 		<div class="control-group"> 
 			<div class="circle">
 				<img class="heading" src="res/default.jpg" alt="用户头像">
@@ -167,284 +83,15 @@
 			<p class="welcome"></p>
 		</div>		
 		<div class="control-group">
-			<a class="btn btn-primary btn-large btn-block" href="#">注销</a>
+			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)">注销</a>
 		</div>
 	</div>
 </div>
-
-<!-- 函数 -->
-<script type="text/javascript">
-	//阻止冒泡
-	function stopPropagation(e){
-		 e.stopPropagation();
-	}
-
-	
-	function newMsgbox(map, center, width, height, text, imgsrc){
-		var msgbox = new Msgbox(center, width, height, text, imgsrc );
-		map.addOverlay(msgbox);
-	}
-
-
-	// 定义自定义覆盖物的构造函数  
-	function Msgbox(point, width, height, text, imgsrc){
-	    this._point = point;
-	    this._width = width;
-	    this._height = height;
-	    this._text = text;
-	    this._imgsrc = imgsrc;
-	    this._length = width;
-	}
-	// 继承API的BMap.Overlay
-	Msgbox.prototype = new BMap.Overlay();
-	// 实现初始化方法  
-	Msgbox.prototype.initialize = function(map){
-	    // 保存map对象实例
-	    this._map = map;
-	    // 创建div元素，作为自定义覆盖物的容器
-	    var div = document.createElement("div");
-	    div.style.position = "absolute"; 
-	    // div.style.zIndex = "999"; 
-	    div.onclick = function(){
-	    	alert('success');
-	    };
-
-
-	    var img = document.createElement("img");
-	    img.src = this._imgsrc;
-	    img.className = img.className + " headimg";
-
-	    var imgdiv = document.createElement("div");
-	    imgdiv.className = imgdiv.className + " circle";
-	    imgdiv.style.position = 'relative';
-	    imgdiv.style.left = "6px";
-	    imgdiv.style.top = '4px';
-	    imgdiv.appendChild(img);
-
-
-	    var arrow = document.createElement("div");
-	    arrow.className = div.className + " triangle_down";
-	    // arrow.style.top = "-25px";
-	    arrow.style.position = 'relative';
-	    arrow.style.left = "25px";
-
-	    var textbox = document.createElement("div");
-	    textbox.className = textbox.className + " textbox";
-	    textbox.style.width = this._width + "px";
-	    if(this._height != 0)
-	    	textbox.style.height = this._height + "px";
-
-
-	    var text = document.createElement("p");
-	    text.innerHTML = this._text;
-	    text.className = text.className + ' text';
-	    var textheight = this._height - 20;
-	    text.style.height = textheight + "px";
-	    var textwidth = this._width - 40;
-	    text.style.width = textwidth + "px";
-
-
-	    textbox.appendChild(text);
-
-	    div.appendChild(textbox);
-	    div.appendChild(arrow);
-	    div.appendChild(imgdiv);
-
-	    div.style.width = this._length + "px";
-	    div.style.height = this._length + "px";
-
-
-	    // 将div添加到覆盖物容器中
-	    map.getPanes().markerPane.appendChild(div);
-	    // 保存div实例
-	    this._div = div;
-	    // 需要将div元素作为方法的返回值，当调用该覆盖物的show、
-	    // hide方法，或者对覆盖物进行移除时，API都将操作此元素。
-	    return div;
-	}
-
-	// 实现绘制方法   
-	Msgbox.prototype.draw = function(){    
-	// 根据地理坐标转换为像素坐标，并设置给容器    
-      var map = this._map;
-      var pixel = map.pointToOverlayPixel(this._point);
-      this._div.style.left = pixel.x - 32 + "px";
-      // 通过精确的计算得到的32和39
-      this._div.style.top  = pixel.y - parseInt(this._div.style.height) - 39  + "px";    
-
-	}
-
-	// 实现显示方法    
-	Msgbox.prototype.show = function(){    
-	    if (this._div){    
-	        this._div.style.display = "";    
-	    }    
-	}      
-	// 实现隐藏方法  
-	Msgbox.prototype.hide = function(){    
-	    if (this._div){    
-	        this._div.style.display = "none";    
-	    }    
-	}
-    // 添加自定义方法   
-    Msgbox.prototype.toggle = function() {    
-        if (this._div) {    
-            if (this._div.style.display == "") {    
-                this.hide();    
-            }    
-            else {    
-                this.show();    
-            }    
-        }    
-    }
-
-    ///////////////////////////////////////
-    ///            customPoint              ///
-    ///          支持自定义div           ///
-    ///////////////////////////////////////
-    function customPoint(point,div){
-    	this._point = point
-    	this._div = div
-    }
-
-    customPoint.prototype = new BMap.Overlay();
-	// 实现初始化方法  
-	customPoint.prototype.initialize = function(map){
-	    // 保存map对象实例
-	    this._map = map;
-
-	    return this._div;
-	}
-
-	// 实现绘制方法   
-	customPoint.prototype.draw = function(){    
-	// 根据地理坐标转换为像素坐标，并设置给容器    
-      var map = this._map;
-      var pixel = map.pointToOverlayPixel(this._point);
-      this._div.style.left = pixel.x + "px";
-      // 
-      this._div.style.top  = pixel.y - parseInt(this._div.style.height) + "px";    
-
-	}
-
-	// 实现显示方法    
-	customPoint.prototype.show = function(){    
-	    if (this._div){    
-	        this._div.style.display = "";    
-	    }    
-	}      
-	// 实现隐藏方法  
-	customPoint.prototype.hide = function(){    
-	    if (this._div){    
-	        this._div.style.display = "none";    
-	    }    
-	}
-    // 添加自定义方法   
-    customPoint.prototype.toggle = function() {    
-        if (this._div) {    
-            if (this._div.style.display == "") {    
-                this.hide();    
-            }    
-            else {    
-                this.show();    
-            }    
-        }    
-    }
-
-    customPoint.prototype.updatePoint = function(point){
-    	this._point = point;
-    }
-
-    ////////////////////////////////////////////
-
-
-	function convertPointG2B(Gpoint) {
-		var Cpoint_arr = coordtransform.wgs84togcj02(Gpoint.lng, Gpoint.lat);
-		var Bpoint_arr = coordtransform.gcj02tobd09(Cpoint_arr[0], Cpoint_arr[1]);
-		var Bpoint = new BMap.Point(Bpoint_arr[0],Bpoint_arr[1]);
-		return Bpoint ;
-	}
-
-
-	function getLocation() {
-	    if (navigator.geolocation) {
-	        navigator.geolocation.getCurrentPosition(updatePosition);
-	    } else {
-	        position = null;
-	    }
-	}
-
-	function updatePosition(pos) {
-	    position = pos;
-	    myPoint.updatePoint(pos);
-	    var h1 = document.getElementById("alert");
-	    if(h1 != null && pos != null)
-	        h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
-
-	}
-
-
-</script>
-
-<!-- 主程序 -->
-<script type="text/javascript">
-	//设置一个坐标点对象
-	function Point(Lng, Lat){
-		this.Lng = Lng;
-		this.Lat = Lat;
-	}
-	center = new Point(121.582086,31.273069);
-	var map = new BMap.Map("container",{enableMapClick:false});
-	// 创建地图实例  
-
-	var Bcenter = new BMap.Point(center.Lng,center.Lat);
-	var result = convertPointG2B(Bcenter);
-	// 创建点坐标  
-	map.centerAndZoom(Bcenter, 15);
-	map.enableDragging();
-	map.enableScrollWheelZoom(true);
-	map.setCenter(result);
-	map.panTo(result);
-	// 初始化地图，设置中心点坐标和地图级别
-	
-	// alerted = 0;
-	// var set_locate=self.setInterval("setLocation()",1000);
-	
-	
-	// 添加自定义覆盖物  
-	var range = 1;//设置范围
-	var data = loadData(center.Lng, center.Lat, range); //加载数据点
-	var msgboxHandle = new Array();
-	var msgboxId = 0;
-
-	for(item in data){
-		var itemCoord = new BMap.Point(data[item].Lng,data[item].Lat);
-		var itemSrc = data[item].UID.toString() + ".jpg";
-		msgboxHandle[msgboxId] = new Msgbox(itemCoord,100,100,data[item].Note,itemSrc);
-		map.addOverlay(msgboxHandle[msgboxId]);
-		msgboxId++;
-	}
-	//
-	//newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
-	var msgbox = new Msgbox(Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
-	map.addOverlay(msgbox);
-	var marker2 = new BMap.Marker(Bcenter);
-	map.addOverlay(marker2);
-	
-	newMsgbox(map,result,100 ,100,"转换坐标（BD）","res/2.png");
-	var marker = new BMap.Marker(result);
-	map.addOverlay(marker);
-	var point2 = new BMap.Point(result.lng+0.1,result.lat+0.1);
-	newMsgbox(map,point2,100 ,100,"测试","res/3.png");
-
-	
-
-	var position = null;
-
-	var myPoint = new customPoint(postion,myPointDiv)
-	map.addOverlay(myPoint)
-	getLocation();
-</script> 
-
 </body>  
+<script src="../dataBase/data-ajax.js"></script>
+<script type="text/javascript" src="js/coordtools.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/tools.js"></script>
+<script type="text/javascript" src="js/msgbox.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </html>
