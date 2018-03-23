@@ -20,12 +20,23 @@
 
 	#container{height:100%}  
 </style>  
-
+<script type="text/javascript">
+	document.onreadystatechange = function () {
+	    if (document.readyState === "complete") {
+	        $("#loadScreen")[0].style.zIndex = '-100';
+	    }
+	}
+</script>
 </head>  
 <body>  
-<div id="container"></div> 
+<div id="loadScreen" style="height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 100;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
+	<img src="res/logo.png" style="height: 150px;width: 150px"></img>
+	<h1 style="color: white;">间迹</h1>
+	<h4 style="color: white;">少女祈祷中...</h4>
+</div>
+<div id="container" style=""></div> 
 
-<div class="bottom_btn">
+<div class="bottom_btn" style="z-index: 99;">
 	<i class="material-icons md-48 md-blue" onclick="post_show()">add_circle</i>
 	<i class="material-icons md-48 md-blue" onclick="login_show()">account_circle</i>
 
