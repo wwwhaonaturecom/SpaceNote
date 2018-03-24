@@ -12,20 +12,21 @@ function post_show () {
 	}
 }
 
-function newMsgbox(map, center, width, height, text, imgsrc) {
-    var msgbox = new Msgbox(center, width, height, text, imgsrc);
+function newMsgbox(map, center, width, height, text, imgsrc,username) {
+    var msgbox = new Msgbox(center, width, height, text, imgsrc,username);
     map.addOverlay(msgbox);
 }
 
 
 // 定义自定义覆盖物的构造函数  
-function Msgbox(point, width, height, text, imgsrc) {
+function Msgbox(point, width, height, text, imgsrc,username) {
     this._point = point;
     this._width = width;
     this._height = height;
     this._text = text;
     this._imgsrc = imgsrc;
     this._length = width;
+    this._username = username
 }
 // 继承API的BMap.Overlay
 Msgbox.prototype = new BMap.Overlay();
@@ -53,6 +54,15 @@ Msgbox.prototype.initialize = function(map) {
     imgdiv.className = imgdiv.className + " circle-small";
     imgdiv.appendChild(img);
 
+    var username = document.createElement("h5");
+    username.innerHTML = this._username;
+    username.className = username.className + "username";
+
+    var userbox = document.createElement("div");
+    userbox.className = userbox.className + "userbox";
+    userbox.appendChild(imgdiv);
+    userbox.appendChild(username);
+
 
     var arrow = document.createElement("div");
     arrow.className = div.className + " triangle_down";
@@ -66,6 +76,7 @@ Msgbox.prototype.initialize = function(map) {
     if (this._height != 0)
         textbox.style.height = this._height + "px";
 
+    
 
     var text = document.createElement("p");
     text.innerHTML = this._text;
@@ -75,10 +86,10 @@ Msgbox.prototype.initialize = function(map) {
     controlbox.className = controlbox.className + "controlbox";
 
     var passagebox = document.createElement('div');
-    passagebox.appendChild(imgdiv);
    	passagebox.appendChild(text);
    	passagebox.className = passagebox.className + "passagebox";
 
+    textbox.appendChild(userbox);
     textbox.appendChild(passagebox);
     textbox.appendChild(controlbox);
 
