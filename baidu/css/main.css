@@ -103,7 +103,7 @@
   transform: translateZ(3em);
   transform-style: preserve-3d;
   transition: .25s;
-  box-shadow: 13em 13em 1.5em rgba(0, 0, 0, 0.1);
+  box-shadow: 1em 1em 1.5em rgba(0, 0, 0, 0.1);
   animation: anim 1s infinite;
 }
 .cube:after {
