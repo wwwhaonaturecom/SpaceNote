@@ -12,7 +12,6 @@
 
 <title>SpaceNote alpha</title>  
 
-
 <style type="text/css">  
 	html{height:100%;}  
 	body{height:100%;margin:0px;padding:0px;}  
@@ -42,16 +41,15 @@
 </div>
 <div id="container" style=""></div> 
 
-<div class="bottom_btn" style="z-index: 99;">
+<div class="bottom_btn" style="z-index: 40;">
 	<i class="material-icons md-48 md-blue" onclick="post_show()">add_circle</i>
 	<i class="material-icons md-48 md-blue" onclick="login_show()">account_circle</i>
-
 </div>
 
 <h1 id="alert"></h1>
 
 <!-- 模糊背景 -->
-<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;" onclick="hide_all()"></div>
+<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;z-index: 50;" onclick="hide_all()"></div>
 
 <div id="loginWindow" class="overlay login-window" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;" onclick="hide_all()">
 	<div class="login-screen" onclick="stopPropagation(event)">

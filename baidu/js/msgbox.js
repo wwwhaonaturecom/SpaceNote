@@ -101,7 +101,7 @@ Msgbox.prototype.draw = function() {
     // 根据地理坐标转换为像素坐标，并设置给容器    
     var map = this._map;
     var pixel = map.pointToOverlayPixel(this._point);
-    this._div.style.left = pixel.x - 35 + "px";
+    this._div.style.left = pixel.x - 35.5 + "px";
     // 
     this._div.style.top = pixel.y - parseInt(this._div.style.height) - 10 + "px";
 }
