@@ -11,8 +11,7 @@
       rel="stylesheet">
 
 <title>SpaceNote alpha</title>  
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
+
 
 <style type="text/css">  
 	html{height:100%;}  
@@ -93,12 +92,10 @@
 
 <div id="userWindow" class="overlay user-window" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;" onclick="hide_all()">
 	<div class="user-screen" onclick="stopPropagation(event)">
-		<div class="control-group"> 
-			<div class="circle">
+		<div class="control-group " style="display:flex;justify-content: left;flex-direction: row;align-items: flex-start;height: 250px;"> 
+			<div class="circle" style="margin-right: 20px;">
 				<img class="userimg headimg" src="res/default.jpg" alt="用户头像">
 			</div>
-		</div>
-		<div class="control-group">
 			<p class="welcome"></p>
 		</div>		
 		<div class="control-group">
@@ -107,10 +104,12 @@
 	</div>
 </div>
 </body>  
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
+<script type="text/javascript" src="js/msgbox.js"></script>
 <script src="../dataBase/data-ajax.js"></script>
 <script type="text/javascript" src="js/coordtools.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/tools.js"></script>
-<script type="text/javascript" src="js/msgbox.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
 </html>
