@@ -21,8 +21,8 @@ function stopPropagation(e) {
 ///          支持自定义div           ///
 ///////////////////////////////////////
 function customPoint(point, div) {
-    this._point = point
-    this._div = div
+    this._point = point;
+    this._div = div;
 }
 
 customPoint.prototype = new BMap.Overlay();
@@ -30,7 +30,9 @@ customPoint.prototype = new BMap.Overlay();
 customPoint.prototype.initialize = function(map) {
     // 保存map对象实例
     this._map = map;
-
+    
+    // 将div添加到覆盖物容器中
+    map.getPanes().markerPane.appendChild(this._div);
     return this._div;
 }
 
@@ -92,8 +94,10 @@ function getLocation() {
 }
 
 function updatePosition(pos) {
-    position = pos;
-    myPoint.updatePoint(pos);
+    position = new BMap.Point(pos.coords.longitude,pos.coords.latitude);
+    var bpos = new convertPointG2B(position);
+    myPoint.updatePoint(bpos);
+    myPoint.draw();
     var h1 = document.getElementById("alert");
     if (h1 != null && pos != null)
         h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
@@ -157,10 +161,11 @@ newMsgbox(map, point2, 150, 100, "测试", "res/3.png" , "azuse");
 var position = point2;
 var myPointDiv = document.createElement("div")
 myPointDiv.id = 'myPointDiv'
-myPointDiv.style.backgroundColor = 'red';
-myPointDiv.className = myPointDiv.className + "circle";
-myPointDiv.style.height = '100px';
-myPointDiv.style.width = '100px';
-var myPoint = new customPoint(position, myPointDiv)
-map.addOverlay(myPoint)
+myPointDiv.style.backgroundColor = 'blue';
+myPointDiv.className = myPointDiv.className + "circle_small";
+myPointDiv.style.height = '20px';
+myPointDiv.style.width = '20px';
+myPointDiv.style.position = 'absolute';
+var myPoint = new customPoint(position, myPointDiv);
+map.addOverlay(myPoint);
 getLocation();
