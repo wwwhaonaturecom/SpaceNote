@@ -75,7 +75,8 @@ customPoint.prototype.updatePoint = function(point) {
 }
 
 ////////////////////////////////////////////
-
+////            定位功能                ////
+///////////////////////////////////////////
 
 function convertPointG2B(Gpoint) {
     var Cpoint_arr = coordtransform.wgs84togcj02(Gpoint.lng, Gpoint.lat);
@@ -85,14 +86,6 @@ function convertPointG2B(Gpoint) {
 }
 
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(updatePosition);
-    } else {
-        position = null;
-    }
-}
-
 function updatePosition(pos) {
     position = new BMap.Point(pos.coords.longitude,pos.coords.latitude);
     var bpos = new convertPointG2B(position);
@@ -101,10 +94,45 @@ function updatePosition(pos) {
     var h1 = document.getElementById("alert");
     if (h1 != null && pos != null)
         h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
+    else
+        h1.innerHTML = "failed";
+    $("#gpsicon")[0].innerHTML = "gps_not_fixed";
+    
+}
 
+function showError(error)
+  {
+  switch(error.code)
+    {
+    case error.PERMISSION_DENIED:
+      $("#alert")[0].innerHTML="User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      $("#alert")[0].innerHTML="Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      $("#alert")[0].innerHTML="The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      $("#alert")[0].innerHTML="An unknown error occurred."
+      break;
+    }
+  }
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(updatePosition,showError);
+    } else {
+        position = null;
+        myPoint.hide();
+        $("#alert")[0].innerHTML = "broswer not support";
+    }
 }
 
 
+////////////////////////////////////////////
+////            程序入口                ////
+///////////////////////////////////////////
 //设置一个坐标点对象
 function Point(Lng, Lat) {
     this.Lng = Lng;
