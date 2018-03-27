@@ -3,10 +3,13 @@
 	padding: 20px;
 	border-radius: 5px;
 	width: 300px;
-	height: 360px;
+	height: 200px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
+	position: relative;
+	top: -150px;
+	z-index: 200;
 	/*margin-top: -180px;*/
 }
 
@@ -19,7 +22,7 @@ font-size: 16px;
 font-weight: 200;
 padding: 10px 5px;
 width: 250px;
-height: 250px;
+height: 90px;
 transition: border .5s;
 }
 

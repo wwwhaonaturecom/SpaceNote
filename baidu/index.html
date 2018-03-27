@@ -42,9 +42,9 @@
 <div id="container" style=""></div> 
 
 <div class="bottom_btn" style="z-index: 40;">
-	<div class="circle iconholder" ><i id="gpsicon" class="material-icons md-26 md-blue2" onclick="getLocation()">gps_off</i></div>
-	<i class="material-icons md-48 md-blue" onclick="post_show()">add_circle</i>
-	<i class="material-icons md-48 md-blue" onclick="login_show()">account_circle</i>
+	<div class="circle iconholder md-shadow-FAB-restingState" ><i id="gpsicon" class="material-icons md-26 md-blue2 " onclick="gpsOn()">gps_off</i></div>
+	<i class="material-icons md-48 md-blue md-shadow-FAB-restingState" onclick="post_show()">add_circle</i>
+	<i class="material-icons md-48 md-blue md-shadow-FAB-restingState" onclick="login_show()">account_circle</i>
 </div>
 
 <h1 id="alert"></h1>
@@ -53,7 +53,7 @@
 <div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;z-index: 50;" onclick="hide_all()"></div>
 
 <div id="loginWindow" class="overlay login-window" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;" onclick="hide_all()">
-	<div class="login-screen" onclick="stopPropagation(event)">
+	<div class="login-screen md-shadow-dialogs" onclick="stopPropagation(event)">
 		<div class="app-title">
 
 			<h1>登录</h1>
@@ -79,7 +79,7 @@
 	</div>
 </div>
 <div id="postWindow" class="overlay post-window" style="visibility: hidden;" onclick="hide_all()">
-	<div class="post-screen" onclick="stopPropagation(event)">
+	<div class="post-screen md-shadow-dialogs" onclick="stopPropagation(event)">
 		<div class="control-group"> 
 			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
 		</div>
@@ -87,10 +87,11 @@
 			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)">发布</a>
 		</div>
 	</div>
+	<div class="msgbox_triangle_down"></div>
 </div>
 
 <div id="userWindow" class="overlay user-window" style="visibility: hidden;" onclick="hide_all()">
-	<div class="user-screen" onclick="stopPropagation(event)">
+	<div class="user-screen md-shadow-dialogs" onclick="stopPropagation(event)">
 		<div class="control-group " style="display:flex;justify-content: left;flex-direction: row;align-items: flex-start;height: 250px;"> 
 			<div class="circle" style="margin-right: 20px;">
 				<img class="userimg headimg" src="res/default.jpg" alt="用户头像">

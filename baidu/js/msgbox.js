@@ -9,7 +9,9 @@ function post_show () {
 	else{
 		postWindow.style.visibility = 'hidden';
 		blurOverlay.style.visibility = 'hidden';
-	}
+    }
+    gpsOn();
+    map.setZoom(18);
 }
 
 function newMsgbox(map, center, width, height, text, imgsrc,username) {
@@ -71,7 +73,7 @@ Msgbox.prototype.initialize = function(map) {
     arrow.style.left = "25px";
 
     var textbox = document.createElement("div");
-    textbox.className = textbox.className + " textbox";
+    textbox.className = textbox.className + " textbox" + " md-shadow-card-restingState";
     textbox.style.width = this._width + "px";
     if (this._height != 0)
         textbox.style.height = this._height + "px";

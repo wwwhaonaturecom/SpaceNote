@@ -100,8 +100,6 @@ function updatePosition(pos) {
         alert("gps locating failed");
         clearInterval(updateLocationInterval);        
     }
-    
-    $("#gpsicon")[0].innerHTML = "gps_not_fixed";
     map.panTo(bpos);
     
 }
@@ -127,7 +125,8 @@ function showError(error)
     clearInterval(updateLocationInterval);    
   }
 
-function getLocation() {
+function gpsOn() {
+    clearInterval(updateLocationInterval); 
     //alert("getLocation");
     if($("#gpsicon")[0].innerHTML != "gps_fixed"){
         $("#gpsicon")[0].innerHTML = "gps_fixed";
@@ -144,7 +143,7 @@ function getLocation() {
         },1000);
     }
     else{
-        $("#gpsicon").innerHTML = "gps_not_fixed";
+        $("#gpsicon")[0].innerHTML = "gps_not_fixed";
         clearInterval(updateLocationInterval);
     }
 }
@@ -219,4 +218,4 @@ var myPoint = new customPoint(position, myPointDiv);
 map.addOverlay(myPoint);
 myPoint.hide();
 
-getLocation();
+gpsOn();
