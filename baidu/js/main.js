@@ -87,12 +87,15 @@ function convertPointG2B(Gpoint) {
 
 
 function updatePosition(pos) {
+    if(positionCache != undefined && positionCache.coords.longitude == pos.coords.longitude && positionCache.coords.latitude == pos.coords.latitude)return;
+    else positionCache = pos;
     //alert("updateLocation");
     position = new BMap.Point(pos.coords.longitude,pos.coords.latitude);
     var bpos = new convertPointG2B(position);
     myPoint.updatePoint(bpos);
-    myPoint.draw();
     myPoint.show();
+    map.panTo(bpos);    
+    myPoint.draw();
     var h1 = document.getElementById("alert");
     if (h1 != null && pos != null)
         h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
@@ -100,7 +103,6 @@ function updatePosition(pos) {
         alert("gps locating failed");
         clearInterval(updateLocationInterval);  
     }
-    map.panTo(bpos);
     updatingGPS = 0;
     $("#gpsicon").removeClass("loading");    
 }
@@ -169,6 +171,7 @@ function gpsOn() {
 var updateLocationInterval;
 var updatingGPS = 0;
 var watchingPosition;
+var positionCache;
 //设置一个坐标点对象
 function Point(Lng, Lat) {
     this.Lng = Lng;
