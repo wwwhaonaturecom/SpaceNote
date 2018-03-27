@@ -20,6 +20,21 @@
 	overflow: hidden;
 }
 
+.myPoint{
+	width: 20px !important;
+	height: 20px;
+	position: absolute;
+	
+	background-color: #3498DB;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	box-shadow: 0px 0px 4px 2px #DDDDDD;
+	overflow: hidden;
+	border: 4px solid white;
+}
+
+
 .headimg{
 	width: 100%;
 }
@@ -38,7 +53,7 @@
 	/*height: 145px;*/
 	background-color: white;
 	border-radius: 5px;
-	box-shadow: 0px 0px 20px 5px #888888;
+	box-shadow: 0px 6px 15px 4px rgba(0, 0, 0, 0.385);
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -129,8 +144,8 @@
 	color: #3498DB;
 	background-color: white;
 	border-radius: 50%;
-	margin-bottom: 10px;
-	box-shadow: 0px 0px 4px 2px #DDDDDD;
+	margin-bottom: 15px;
+	box-shadow: 0px 15px 25px 2px rgba(0, 0, 0, 0.261);
 }
 
 .material-icons.md-blue2 { 
@@ -149,8 +164,8 @@
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-	margin-bottom: 10px;
-	box-shadow: 0px 0px 4px 2px #DDDDDD;
+	margin-bottom: 15px;
+	box-shadow: 0px 15px 25px 2px rgba(0, 0, 0, 0.261);
 	background-color: #3498DB;
 	border: 4px solid snow;
 }

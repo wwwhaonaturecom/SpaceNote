@@ -41,9 +41,9 @@ customPoint.prototype.draw = function() {
     // 根据地理坐标转换为像素坐标，并设置给容器    
     var map = this._map;
     var pixel = map.pointToOverlayPixel(this._point);
-    this._div.style.left = pixel.x + "px";
+    this._div.style.left = pixel.x - parseInt(this._div.style.width)/2 + "px";
     // 
-    this._div.style.top = pixel.y - parseInt(this._div.style.height) + "px";
+    this._div.style.top = pixel.y - parseInt(this._div.style.height)/2 + "px";
 
 }
 
@@ -87,16 +87,22 @@ function convertPointG2B(Gpoint) {
 
 
 function updatePosition(pos) {
+    //alert("updateLocation");
     position = new BMap.Point(pos.coords.longitude,pos.coords.latitude);
     var bpos = new convertPointG2B(position);
     myPoint.updatePoint(bpos);
     myPoint.draw();
+    myPoint.show();
     var h1 = document.getElementById("alert");
     if (h1 != null && pos != null)
         h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
-    else
-        h1.innerHTML = "failed";
+    else{
+        alert("gps locating failed");
+        clearInterval(updateLocationInterval);        
+    }
+    
     $("#gpsicon")[0].innerHTML = "gps_not_fixed";
+    map.panTo(bpos);
     
 }
 
@@ -105,34 +111,50 @@ function showError(error)
   switch(error.code)
     {
     case error.PERMISSION_DENIED:
-      $("#alert")[0].innerHTML="User denied the request for Geolocation."
+      alert("User denied the request for Geolocation.");
       break;
     case error.POSITION_UNAVAILABLE:
-      $("#alert")[0].innerHTML="Location information is unavailable."
+      alert("Location information is unavailable.");
       break;
     case error.TIMEOUT:
-      $("#alert")[0].innerHTML="The request to get user location timed out."
+      alert("The request to get user location timed out.");
       break;
     case error.UNKNOWN_ERROR:
-      $("#alert")[0].innerHTML="An unknown error occurred."
+      alert("An unknown error occurred.");
       break;
     }
+    $("#gpsicon")[0].innerHTML = "gps_off";
+    clearInterval(updateLocationInterval);    
   }
 
 function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(updatePosition,showError);
-    } else {
-        position = null;
-        myPoint.hide();
-        $("#alert")[0].innerHTML = "broswer not support";
+    //alert("getLocation");
+    if($("#gpsicon")[0].innerHTML != "gps_fixed"){
+        $("#gpsicon")[0].innerHTML = "gps_fixed";
+        updateLocationInterval = self.setInterval(function(){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(updatePosition,showError);
+            } else {
+                position = null;
+                myPoint.hide();
+                alert("broswer not support");
+                $("#gpsicon")[0].innerHTML = "gps_off";
+                clearInterval(updateLocationInterval);
+            }
+        },1000);
+    }
+    else{
+        $("#gpsicon").innerHTML = "gps_not_fixed";
+        clearInterval(updateLocationInterval);
     }
 }
+
 
 
 ////////////////////////////////////////////
 ////            程序入口                ////
 ///////////////////////////////////////////
+var updateLocationInterval;
 //设置一个坐标点对象
 function Point(Lng, Lat) {
     this.Lng = Lng;
@@ -187,13 +209,14 @@ newMsgbox(map, point2, 150, 100, "测试", "res/3.png" , "azuse");
 
 
 var position = point2;
-var myPointDiv = document.createElement("div")
-myPointDiv.id = 'myPointDiv'
-myPointDiv.style.backgroundColor = 'blue';
-myPointDiv.className = myPointDiv.className + "circle_small";
+var myPointDiv = document.createElement("div");
+myPointDiv.id = 'myPointDiv';
+myPointDiv.className = myPointDiv.className + "myPoint";
 myPointDiv.style.height = '20px';
 myPointDiv.style.width = '20px';
 myPointDiv.style.position = 'absolute';
 var myPoint = new customPoint(position, myPointDiv);
 map.addOverlay(myPoint);
+myPoint.hide();
+
 getLocation();
