@@ -151,6 +151,8 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 .material-icons.md-blue { 
+	width: 48px;
+	height: 48px;
 	overflow: hidden; 
 	color: #3498DB;
 	background-color: white;

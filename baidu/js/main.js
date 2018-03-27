@@ -129,30 +129,35 @@ function showError(error)
 
 function gpsOn() {
     clearInterval(updateLocationInterval); 
+    var geo_options = {
+        enableHighAccuracy: true, 
+        maximumAge        : 30000, 
+        timeout           : 27000
+      };
     //alert("getLocation");
     if($("#gpsicon")[0].innerHTML != "gps_fixed"){
         $("#gpsicon")[0].innerHTML = "gps_fixed";
-        navigator.geolocation.getCurrentPosition(updatePosition,showError);
+        watchingPosition = navigator.geolocation.watchPosition(updatePosition, showError, geo_options);
         updatingGPS = 1;
         $("#gpsicon").addClass("loading");
-        updateLocationInterval = self.setInterval(function(){
-            if(updatingGPS == 1)return;
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(updatePosition,showError);
-                updatingGPS = 1;
-                $("#gpsicon").addClass("loading");
-            } else {
-                position = null;
-                myPoint.hide();
-                alert("broswer not support");
-                $("#gpsicon")[0].innerHTML = "gps_off";
-                clearInterval(updateLocationInterval);
-            }
-        },1000);
+        // updateLocationInterval = self.setInterval(function(){
+        //     if(updatingGPS == 1)return;
+        //     if (navigator.geolocation) {
+        //         navigator.geolocation.getCurrentPosition(updatePosition,showError);
+        //         updatingGPS = 1;
+        //         $("#gpsicon").addClass("loading");
+        //     } else {
+        //         position = null;
+        //         myPoint.hide();
+        //         alert("broswer not support");
+        //         $("#gpsicon")[0].innerHTML = "gps_off";
+        //         clearInterval(updateLocationInterval);
+        //     }
+        // },1000);
     }
     else{
         $("#gpsicon")[0].innerHTML = "gps_not_fixed";
-        clearInterval(updateLocationInterval);
+        navigator.geolocation.clearWatch(watchingPosition);
     }
 }
 
@@ -163,6 +168,7 @@ function gpsOn() {
 ///////////////////////////////////////////
 var updateLocationInterval;
 var updatingGPS = 0;
+var watchingPosition;
 //设置一个坐标点对象
 function Point(Lng, Lat) {
     this.Lng = Lng;
