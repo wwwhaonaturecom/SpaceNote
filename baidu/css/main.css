@@ -294,3 +294,12 @@
 	box-shadow: 0px 16px 16px 16px rgba(0, 0, 0, 0.165) !important;
 }
 
+.loading{
+	animation: myfirst 1s infinite;
+}
+
+@keyframes myfirst
+{
+from {background: red;}
+to {background: yellow;}
+}

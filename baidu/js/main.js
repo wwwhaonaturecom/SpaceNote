@@ -98,10 +98,11 @@ function updatePosition(pos) {
         h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
     else{
         alert("gps locating failed");
-        clearInterval(updateLocationInterval);        
+        clearInterval(updateLocationInterval);  
     }
     map.panTo(bpos);
-    
+    updatingGPS = 0;
+    $("#gpsicon").removeClass("loading");    
 }
 
 function showError(error)
@@ -123,6 +124,7 @@ function showError(error)
     }
     $("#gpsicon")[0].innerHTML = "gps_off";
     clearInterval(updateLocationInterval);    
+    $("#gpsicon").removeClass("loading");    
   }
 
 function gpsOn() {
@@ -130,9 +132,15 @@ function gpsOn() {
     //alert("getLocation");
     if($("#gpsicon")[0].innerHTML != "gps_fixed"){
         $("#gpsicon")[0].innerHTML = "gps_fixed";
+        navigator.geolocation.getCurrentPosition(updatePosition,showError);
+        updatingGPS = 1;
+        $("#gpsicon").addClass("loading");
         updateLocationInterval = self.setInterval(function(){
+            if(updatingGPS == 1)return;
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(updatePosition,showError);
+                updatingGPS = 1;
+                $("#gpsicon").addClass("loading");
             } else {
                 position = null;
                 myPoint.hide();
@@ -154,6 +162,7 @@ function gpsOn() {
 ////            程序入口                ////
 ///////////////////////////////////////////
 var updateLocationInterval;
+var updatingGPS = 0;
 //设置一个坐标点对象
 function Point(Lng, Lat) {
     this.Lng = Lng;
