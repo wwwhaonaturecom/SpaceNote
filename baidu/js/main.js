@@ -172,6 +172,8 @@ var updateLocationInterval;
 var updatingGPS = 0;
 var watchingPosition;
 var positionCache;
+
+$(".placeHolder")[0].style.height = document.body.clientHeight/2 - 230 + 'px';
 //设置一个坐标点对象
 function Point(Lng, Lat) {
     this.Lng = Lng;
