@@ -81,10 +81,10 @@
 <div id="postWindow" class="overlay post-window" style="visibility: hidden;" onclick="hide_all()">
 	<div class="post-screen md-shadow-dialogs" onclick="stopPropagation(event)">
 		<div class="control-group"> 
-			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
+			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？" required></textarea>
 		</div>
 		<div class="control-group">
-			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)">发布</a>
+			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)" onclick="uploadData()">发布</a>
 		</div>
 	</div>
 	<div class="msgbox_triangle_down"></div>

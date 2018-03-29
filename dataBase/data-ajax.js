@@ -38,7 +38,9 @@ function loadData(Lng, Lat, Rng, Ref = false) { //Rng为距离中心点的距离
 }
 
 //
-function uploadData(UID, Uname, Note, Lng, Lat, Alt) {
+function uploadData() {
+    var UID, Uname, Note, Lng, Lat, Alt
+    
     $.ajax({
         url: uploadURL,        
         type: "post",
