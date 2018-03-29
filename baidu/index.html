@@ -30,7 +30,7 @@
 </script>
 </head>  
 <body>  
-<div id="loadScreen" style="height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 100;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
+<div id="loadScreen" style="height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 999;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
 	<div class='base'>
 	  <div class='cube' style="top:-100px;left: -100px;background-image: url(res/logo.png);background-size:100% 100%;  "></div>
 	</div>
@@ -79,6 +79,7 @@
 	</div>
 </div>
 <div id="postWindow" class="overlay post-window" style="visibility: hidden;" onclick="hide_all()">
+	<div class="placeHolder"></div>
 	<div class="post-screen md-shadow-dialogs" onclick="stopPropagation(event)">
 		<div class="control-group"> 
 			<textarea class="post-input" name="post_content" placeholder="有什么新鲜事？" required></textarea>
@@ -87,7 +88,7 @@
 			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)" onclick="uploadData()">发布</a>
 		</div>
 	</div>
-	<div class="msgbox_triangle_down"></div>
+	<div class="postbox_triangle_down"></div>
 </div>
 
 <div id="userWindow" class="overlay user-window" style="visibility: hidden;" onclick="hide_all()">
