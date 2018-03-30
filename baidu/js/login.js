@@ -52,7 +52,8 @@ function login() {
     //         alert(textStatus);
     //     }
 	// })
-
+	// 返回UID
+	// sessionStorage.setItem("UID","");
 	sessionStorage.setItem("loginStatus", "true");
 	sessionStorage.setItem("Uname", Uname);
 	if (loginWindow.style.visibility == 'hidden') {

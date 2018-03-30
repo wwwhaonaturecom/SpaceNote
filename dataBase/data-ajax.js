@@ -41,6 +41,14 @@ function loadData(Lng, Lat, Rng, Ref = false) { //Rng为距离中心点的距离
 function uploadData() {
     var UID, Uname, Note, Lng, Lat, Alt
     
+    //UID = sessionStorage.getItem("UID");
+    UID = "1650275";    //test
+    Uname = sessionStorage.getItem("Uname");
+    Note = document.getElementById("post-input").value;
+    Lng = 
+    Lat = 
+    Alt = 0;
+
     $.ajax({
         url: uploadURL,        
         type: "post",

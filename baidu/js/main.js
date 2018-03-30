@@ -4,9 +4,8 @@ function welcome() {
     if(sessionStorage["loginStatus"] == "true") {
         Uname = sessionStorage["Uname"];
         $("p.welcome").html("你好！"+Uname);
-    }
+    }    
 }
-welcome();  //调用
 
 //阻止冒泡
 function stopPropagation(e) {
@@ -17,7 +16,7 @@ function stopPropagation(e) {
 
 
 ///////////////////////////////////////
-///            customPoint              ///
+///           customPoint           ///
 ///          支持自定义div           ///
 ///////////////////////////////////////
 function customPoint(point, div) {
@@ -163,6 +162,11 @@ function gpsOn() {
     }
 }
 
+//设置一个坐标点对象
+function Point(Lng, Lat) {
+    this.Lng = Lng;
+    this.Lat = Lat;
+}
 
 
 ////////////////////////////////////////////
@@ -173,12 +177,11 @@ var updatingGPS = 0;
 var watchingPosition;
 var positionCache;
 
+//若已登陆设置用户欢迎窗口
+welcome();
+
 $(".placeHolder")[0].style.height = document.body.clientHeight/2 - 230 + 'px';
-//设置一个坐标点对象
-function Point(Lng, Lat) {
-    this.Lng = Lng;
-    this.Lat = Lat;
-}
+
 center = new Point(121.582086, 31.273069);
 var map = new BMap.Map("container", {
     enableMapClick: false
@@ -207,13 +210,20 @@ var msgboxId = 0;
 
 for (item in data) {
     var itemCoord = new BMap.Point(data[item].Lng, data[item].Lat);
-    var itemSrc = data[item].UID.toString() + ".jpg";
-    msgboxHandle[msgboxId] = new Msgbox(itemCoord, 100, 100, data[item].Note, itemSrc);
+    var itemSrc = data[item].UID.toString() + ".png";
+    msgboxHandle[msgboxId] = new Msgbox(itemCoord, 150, 100, data[item].Note, itemSrc, data[item].Uname);
     map.addOverlay(msgboxHandle[msgboxId]);
     msgboxId++;
 }
-//
-//newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
+
+//handle imghead error
+$('.headimg').error(function(){
+    $(this).attr('src', "../img/default.jpg");
+})
+
+
+
+newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
 var msgbox = new Msgbox(Bcenter, 150, 100, "原始坐标（WGS84）", "res/1.png" , "azuse");
 map.addOverlay(msgbox);
 var marker2 = new BMap.Marker(Bcenter);

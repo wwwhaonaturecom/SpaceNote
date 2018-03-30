@@ -78,8 +78,6 @@ Msgbox.prototype.initialize = function(map) {
     if (this._height != 0)
         textbox.style.height = this._height + "px";
 
-    
-
     var text = document.createElement("p");
     text.innerHTML = this._text;
     text.className = text.className + ' text';
