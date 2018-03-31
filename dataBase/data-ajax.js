@@ -39,26 +39,35 @@ function loadData(Lng, Lat, Rng, Ref = false) { //Rng为距离中心点的距离
 
 //
 function uploadData() {
-    var UID, Uname, Note, Lng, Lat, Alt
-    
-    //UID = sessionStorage.getItem("UID");
-    UID = "1650275";    //test
-    Uname = sessionStorage.getItem("Uname");
-    Note = document.getElementById("post-input").value;
-    Lng = 
-    Lat = 
-    Alt = 0;
 
-    $.ajax({
-        url: uploadURL,        
-        type: "post",
-        async: false,
-        data: {"UID": UID, "Uname": Uname,"Note" : Note, "Lng": Lng, "Lat": Lat, "Alt": Alt},
-        success: function(result){
-            alert(result);
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown){
-            alert(textStatus);
-        }
-    });
+    if(sessionStorage["loginStatus"] == "true" && $("#gpsicon")[0].innerHTML == "gps_fixed"){
+        var UID, Uname, Note, Lng, Lat, Alt;
+        
+        //UID = sessionStorage.getItem("UID");
+        UID = "1650275";    //test
+        Uname = sessionStorage.getItem("Uname");
+        Note = document.getElementById("post-input").value;
+        Lng = position.Lng;
+        Lat = position.Lat;
+        Alt = 0;
+        var itemPicSrc = UID.toString() + ".png";
+        msgboxHandle[msgboxNum] = new Msgbox(position, 150, 100, Note, itemPicSrc, Uname);
+        map.addOverlay(msgboxHandle[msgboxNum]);
+        msgboxNum++;
+
+        $.ajax({
+            url: uploadURL,        
+            type: "post",
+            async: false,
+            data: {"UID": UID, "Uname": Uname,"Note" : Note, "Lng": Lng, "Lat": Lat, "Alt": Alt},
+            success: function(result){
+                alert(result);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown){
+                alert(textStatus);
+            }
+        });
+    }
+    else if(sessionStorage["loginStatus"] != "true")alert("请先登录");
+    else if($("#gpsicon")[0].innerHTML != "gps_fixed")alert("gps定位失败");
 }

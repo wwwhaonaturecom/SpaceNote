@@ -12,8 +12,23 @@ function stopPropagation(e) {
     e.stopPropagation();
 }
 
-
-
+function post_show () {    
+    if(updatingGPS == 1 || $("#gpsicon")[0].innerHTML != "gps_fixed"){
+        alert("GPS定位失败");
+        return;
+    }
+	var postWindow = document.getElementById("postWindow");
+	var blurOverlay = document.getElementById("blurOverlay");
+	if(postWindow.style.visibility == 'hidden'){
+		postWindow.style.visibility = 'visible';
+		blurOverlay.style.visibility = 'visible';
+	}
+	else{
+		postWindow.style.visibility = 'hidden';
+		blurOverlay.style.visibility = 'hidden';
+    }
+    map.setZoom(18);
+}
 
 ///////////////////////////////////////
 ///           customPoint           ///
@@ -158,6 +173,7 @@ function gpsOn() {
     }
     else{
         $("#gpsicon")[0].innerHTML = "gps_not_fixed";
+        $("#gpsicon").removeClass("loading");
         navigator.geolocation.clearWatch(watchingPosition);
     }
 }
@@ -206,14 +222,14 @@ map.panTo(result);
 var range = 1; //设置范围
 var data = loadData(center.Lng, center.Lat, range); //加载数据点
 var msgboxHandle = new Array();
-var msgboxId = 0;
+var msgboxNum = 0;
 
 for (item in data) {
     var itemCoord = new BMap.Point(data[item].Lng, data[item].Lat);
-    var itemSrc = data[item].UID.toString() + ".png";
-    msgboxHandle[msgboxId] = new Msgbox(itemCoord, 150, 100, data[item].Note, itemSrc, data[item].Uname);
-    map.addOverlay(msgboxHandle[msgboxId]);
-    msgboxId++;
+    var itemPicSrc = data[item].UID.toString() + ".png";
+    msgboxHandle[msgboxNum] = new Msgbox(itemCoord, 150, 100, data[item].Note, itemPicSrc, data[item].Uname);
+    map.addOverlay(msgboxHandle[msgboxNum]);
+    msgboxNum++;
 }
 
 //handle imghead error
