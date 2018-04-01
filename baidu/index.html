@@ -115,16 +115,16 @@
 	</div>
 </div>
 
-<div id="dialogWindow" class="overlay dialog-window" style="visibility: ;" onclick="hide_all()">
+<div id="dialogWindow" class="overlay dialog-window" style="visibility: hidden;" onclick="hide_all()">
 	<div class="dialog-screen md-shadow-dialogs" onclick="stopPropagation(event)">
 		<div class="dialog-userbox">
 			<div class="circle dialog-headimgbox">
-				<img class="userimg headimg" src="img/default.jpg" onerror="headimgNotFound();" alt="用户头像">
+				<img id="dialogUserimg" class="userimg headimg" src="img/default.jpg" onerror="headimgNotFound();" alt="用户头像">
 			</div>
-			<p class="dialog-username">username</p>
+			<p id="dialogUsername" class="dialog-username">username</p>
 		</div>
 		<div class="dialog-passagebox">
-			<p style="overflow:hidden;">passage</p>
+			<p id="dialogPassage" class="dialog-passage">passage</p>
 		</div>
 	</div>
 </div>
