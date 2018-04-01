@@ -2,8 +2,8 @@
 //与服务器请求数据时的ajax部分
 //回传数据为json格式的字符串 jsonData中为转换后的json数组
 //如需在其他位置使用时请设为全局变量
-//上传数据部分暂未完成测试
-//kagaya 2018年2月1日
+//上传数据部分存在bug
+//kagaya 2018年4月1日
 //////////////////////////////////////
 const uploadURL = "../dataBase/upload.php";
 const downloadURL = "../dataBase/download.php";
@@ -51,11 +51,16 @@ function uploadData() {
         Lat = position.lat;
         Alt = 0;
         var itemPicSrc = UID.toString() + ".png";
- 
+
+        if(Note == "") {
+            alert("请输入留言");
+            return 
+        }
 
         $.ajax({
             url: uploadURL,        
             type: "post",
+            dataType:"text",
             async: false,
             data: {"UID": UID, "Uname": Uname,"Note" : Note, "Lng": Lng, "Lat": Lat, "Alt": Alt},
             success: function(result){
@@ -66,6 +71,8 @@ function uploadData() {
                 hide_all();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
                 alert(textStatus);
             }
         });
