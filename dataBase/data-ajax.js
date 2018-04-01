@@ -51,9 +51,7 @@ function uploadData() {
         Lat = bpos.Lat;
         Alt = 0;
         var itemPicSrc = UID.toString() + ".png";
-        msgboxHandle[msgboxNum] = new Msgbox(bpos, 150, 100, Note, itemPicSrc, Uname);
-        map.addOverlay(msgboxHandle[msgboxNum]);
-        msgboxNum++;
+ 
 
         $.ajax({
             url: uploadURL,        
@@ -62,6 +60,10 @@ function uploadData() {
             data: {"UID": UID, "Uname": Uname,"Note" : Note, "Lng": Lng, "Lat": Lat, "Alt": Alt},
             success: function(result){
                 alert(result);
+                msgboxHandle[msgboxNum] = new Msgbox(bpos, 150, 100, Note, itemPicSrc, Uname);
+                map.addOverlay(msgboxHandle[msgboxNum]);
+                msgboxNum++;
+                hide_all();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown){
                 alert(textStatus);
