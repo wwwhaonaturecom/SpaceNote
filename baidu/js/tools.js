@@ -51,6 +51,7 @@ function hide_all(){
     blurOverlay.style.visibility = 'hidden';
     postWindow.style.visibility = 'hidden';
     userWindow.style.visibility = 'hidden';
+    $("#dialogWindow")[0].style.visibility = 'hidden';
     
 }
 

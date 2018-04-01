@@ -300,3 +300,31 @@ span{
 	justify-content: center;
 	align-items: center;
 }
+
+.dialog-window{
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.dialog-screen{
+	margin-top: 100px;
+	width: 80%;
+	height: 200px;
+	background-color: white;
+}
+
+.dialog-userbox{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: center
+}
+
+.dialog-headimgbox{
+	margin: 10px;
+}
+
+.dialog-passagebox{
+	overflow: hidden;
+	margin: 10px;
+}
