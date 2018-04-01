@@ -47,8 +47,8 @@ function uploadData() {
         UID = "1650275";    //test
         Uname = sessionStorage.getItem("Uname");
         Note = document.getElementById("post-input").value;
-        Lng = position.Lng;
-        Lat = position.Lat;
+        Lng = position.lng;
+        Lat = position.lat;
         Alt = 0;
         var itemPicSrc = UID.toString() + ".png";
  
