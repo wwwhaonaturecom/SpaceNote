@@ -74,6 +74,11 @@ Msgbox.prototype.initialize = function(map) {
     var controlbox = document.createElement('div');
     controlbox.className = controlbox.className + "controlbox";
 
+    var replynum = document.createElement('span');
+    replynum.innerHTML = "0";
+    controlbox.appendChild(replynum);
+    
+
     var passagebox = document.createElement('div');
    	passagebox.appendChild(text);
    	passagebox.className = passagebox.className + "passagebox";
