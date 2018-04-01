@@ -3,7 +3,7 @@
 require_once("DB.php");
 
 class Item{
-    private $UID,$Uname,$Note,$Lng,$Lat,$Alt,$Time;
+    public $UID,$Uname,$Note,$Lng,$Lat,$Alt,$Time;
     function __construct($UID,$Uname,$Note,$Longitude,$Latitude,$Altitude,$Time){
         $this->UID = $UID;
         $this->Uname = $Uname;
@@ -76,22 +76,19 @@ class SpaceNote{
         }
         //输出json格式字符串
         echo json_encode($dataBuf);        
-        // echo "show begin:"."<br>";        
-        // foreach ($dataBuf as $e) {
-        //     $e->show_data();
-        // }
-        // echo "<br>"."show end"."<br>";
-        //need to debug
+
         mysqli_free_result($result);
-        // echo "lodaData end<br>";
     }
 
     function saveData($item){
-        $sql = "INSERT INTO `spaceNoteData_demo`(`UID`,`Uname`,`Note`,`Longitude`,`Latitude`,`Altitude`,`Time`)
-        VALUES ('".$item->UID."','".$item->Uname."','".$item->Note."','".$item->Lng."','".$item->Lat."','".$item->Alt."','".$item->Time."');";
+        $sql = "INSERT INTO `spaceNoteData_demo`(`UID`,`Uname`,`Note`,`Longitude`,`Latitude`,`Time`,`Altitude`) 
+        VALUES ('".$item->UID."','".$item->Uname."','".$item->Note."','".$item->Lng."','".$item->Lat."','".$item->Time."','".$item->Alt."');";
         
-        if(!mysqli_query($this->db->conn,$sql)){
-            die("save data fail:".mysqli_error($this->db->conn));
+        // echo var_dump($this->db->conn);
+        $result = mysqli_query($this->db->conn,$sql);
+        
+        if(!$result){
+            echo "Data save fail:".mysqli_error($this->db->conn);
         }else{
             echo "Data save successfully!!!";
         }
