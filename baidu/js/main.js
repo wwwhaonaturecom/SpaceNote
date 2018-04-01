@@ -213,7 +213,7 @@ var map = new BMap.Map("container", {
 var Bcenter = new BMap.Point(center.Lng, center.Lat);
 var result = convertPointG2B(Bcenter);
 // 创建点坐标  
-map.centerAndZoom(Bcenter, 17);
+map.centerAndZoom(result, 17);
 map.enableDragging();
 map.enableScrollWheelZoom(true);
 map.setCenter(result);
