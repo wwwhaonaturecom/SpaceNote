@@ -37,6 +37,9 @@ Msgbox.prototype.initialize = function(map) {
     var img = document.createElement("img");
     img.src = this._imgsrc;
     img.className = img.className + " headimg";
+    img.onerror = function(){
+        $(this).attr('src', "img/default.jpg");
+    };
 
     var imgdiv = document.createElement("div");
     imgdiv.className = imgdiv.className + " circle-small";

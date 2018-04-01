@@ -28,6 +28,10 @@ function post_show () {
 		blurOverlay.style.visibility = 'hidden';
     }
     map.setZoom(18);
+    
+    bpos = convertPointG2B(position);
+    map.panTo(bpos);
+    
 }
 
 ///////////////////////////////////////
@@ -233,11 +237,6 @@ for (item in data) {
 }
 
 //handle imghead error
-$('.headimg').error(function(){
-    $(this).attr('src', "../img/default.jpg");
-})
-
-
 
 newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
 var msgbox = new Msgbox(Bcenter, 150, 100, "原始坐标（WGS84）", "res/1.png" , "azuse");
@@ -265,3 +264,8 @@ map.addOverlay(myPoint);
 myPoint.hide();
 
 gpsOn();
+
+// $('.headimg').error(function(){
+//     $(this).attr('src', "img/default.jpg");
+// })
+

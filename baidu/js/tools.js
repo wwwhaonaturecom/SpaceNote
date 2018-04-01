@@ -54,3 +54,7 @@ function hide_all(){
     
 }
 
+function headimgNotFound(){
+    this.src="img/default.jpg";
+    this.onerror=null;
+}

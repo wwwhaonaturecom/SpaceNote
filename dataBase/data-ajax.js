@@ -42,16 +42,16 @@ function uploadData() {
 
     if(sessionStorage["loginStatus"] == "true" && $("#gpsicon")[0].innerHTML == "gps_fixed"){
         var UID, Uname, Note, Lng, Lat, Alt;
-        
+        var bpos = new convertPointG2B(position);
         //UID = sessionStorage.getItem("UID");
         UID = "1650275";    //test
         Uname = sessionStorage.getItem("Uname");
         Note = document.getElementById("post-input").value;
-        Lng = position.Lng;
-        Lat = position.Lat;
+        Lng = bpos.Lng;
+        Lat = bpos.Lat;
         Alt = 0;
         var itemPicSrc = UID.toString() + ".png";
-        msgboxHandle[msgboxNum] = new Msgbox(position, 150, 100, Note, itemPicSrc, Uname);
+        msgboxHandle[msgboxNum] = new Msgbox(bpos, 150, 100, Note, itemPicSrc, Uname);
         map.addOverlay(msgboxHandle[msgboxNum]);
         msgboxNum++;
 
