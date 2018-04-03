@@ -79,5 +79,7 @@ function logout() {
 	userWindow.style.visibility = 'hidden';
 	blurOverlay.style.visibility = 'hidden';
 	$("p.welcome").html("");	
+
+	hide_all();
 }
 
