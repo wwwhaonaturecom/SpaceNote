@@ -9,82 +9,85 @@
         p{margin-left:5px; font-size:14px;}
     </style>
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
+<link rel="stylesheet" type="text/css" href="css3-mobile-slider-menu/css/default.css">
+<style type="text/css">
+	/*Fontawesome Iconfont*/
+	/*Montserrat, Open Sans*/
+	* {margin: 0; padding: 0;}
+	#wrapper {width: 645px; height: 500px; margin: 35px auto 50px auto;}
+	h2 {
+		color: #fff; font: 300 40px 'Open Sans';
+		width: 300px; padding: 30px; float: left;
+	}
+
+	.mobile {
+		float: left; position: relative;
+		box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.5);
+		overflow: hidden;
+	}
+	/*Hiding the checkbox*/
+	#tm {display: none;}
+	/*Content area*/
+	.mobile section {
+		background: url("img/mb1.png");
+		width: 285px; height: 500px;
+		position: relative; transition: all 0.25s;
+	}
+	.mobile section label {
+		color: white; font: bold 14px Montserrat; text-align: center;
+		border: 2px solid white; border-radius: 4px;
+		display: block; padding: 10px 0;
+		width: 60%; position: absolute; left: 20%; top: 100px;
+		cursor: pointer; text-transform: uppercase;
+	}
+	/*Nav styles*/
+	.sidenav {
+		background: rgb(50, 60, 60); width: 150px;
+		position: absolute; left: 0; top: 0; bottom: 0; padding-top: 100px;
+	}
+	.sidenav li {list-style-type: none;}
+	.sidenav a { color: white; text-decoration: none; }
+	.sidenav b {
+		font: bold 12px/48px Montserrat; display: block;
+		opacity: 0; transform: translateX(50px); transition: all 0.4s;
+	}
+	.sidenav i {
+		display: block; width: 50px; float: left; 
+		font-size: 16px; line-height: 48px; text-align: center;
+	}
+	/*Animation controls using checkbox hack*/
+	/*Animate content area to the right*/
+	#tm:checked ~ section {transform: translateX(150px);}
+	/*Animate links from right to left + fade in effect*/
+	#tm:checked ~ .sidenav b {opacity: 1; transform: translateX(0);}
+
+	/*Adding delay to link animation - in multiples of .08s*/
+	/*One can use jQuery also for creating the delayed effect. But I will stick to manual CSS for this walkthrough.*/
+	#tm:checked ~ .sidenav li:nth-child(1) b {transition-delay: 0.08s;}
+	#tm:checked ~ .sidenav li:nth-child(2) b {transition-delay: 0.16s;}
+	#tm:checked ~ .sidenav li:nth-child(3) b {transition-delay: 0.24s;}
+	#tm:checked ~ .sidenav li:nth-child(4) b {transition-delay: 0.32s;}
+	#tm:checked ~ .sidenav li:nth-child(5) b {transition-delay: 0.40s;}
+	#tm:checked ~ .sidenav li:nth-child(6) b {transition-delay: 0.48s;}
+	</style>    
     <title>添加自定义覆盖物</title>
 </head>
 <body>
-    <div id="allmap"></div>
-    <p>图示中为房产覆盖物，鼠标移到覆盖物上，自动显示房屋套数</p>
+    <ul class="sidenav">
+        <li><a href="#"><i class="fa fa-check"></i><b>Tasks</b></a></li>
+        <li><a href="#"><i class="fa fa-inbox"></i><b>Messages</b></a></li>
+        <li><a href="#"><i class="fa fa-pencil"></i><b>New Post</b></a></li>
+        <li><a href="#"><i class="fa fa-cog"></i><b>Settings</b></a></li>
+        <li><a href="#"><i class="fa fa-star"></i><b>Starred</b></a></li>
+        <li><a href="#"><i class="fa fa-power-off"></i><b>Logout</b></a></li>
+      </ul>
+      <section>
+          <!-- Label for #tm checkbox -->
+          <label for="tm">Click Me</label>
+        </section>
 </body>
 </html>
 <script type="text/javascript">
     // 百度地图API功能
-    var mp = new BMap.Map("allmap");
-    mp.centerAndZoom(new BMap.Point(116.3964,39.9093), 15);
-    mp.enableScrollWheelZoom();
-    // 复杂的自定义覆盖物
-    function ComplexCustomOverlay(point, text, mouseoverText){
-      this._point = point;
-      this._text = text;
-      this._overText = mouseoverText;
-    }
-    ComplexCustomOverlay.prototype = new BMap.Overlay();
-    ComplexCustomOverlay.prototype.initialize = function(map){
-      this._map = map;
-      var div = this._div = document.createElement("div");
-      div.style.position = "absolute";
-      div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
-      div.style.backgroundColor = "#EE5D5B";
-      div.style.border = "1px solid #BC3B3A";
-      div.style.color = "white";
-      div.style.height = "18px";
-      div.style.padding = "2px";
-      div.style.lineHeight = "18px";
-      div.style.whiteSpace = "nowrap";
-      div.style.MozUserSelect = "none";
-      div.style.fontSize = "12px"
-      var span = this._span = document.createElement("span");
-      div.appendChild(span);
-      span.appendChild(document.createTextNode(this._text));      
-      var that = this;
-
-      var arrow = this._arrow = document.createElement("div");
-      arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
-      arrow.style.position = "absolute";
-      arrow.style.width = "11px";
-      arrow.style.height = "10px";
-      arrow.style.top = "22px";
-      arrow.style.left = "10px";
-      arrow.style.overflow = "hidden";
-      div.appendChild(arrow);
-     
-      div.onmouseover = function(){
-        this.style.backgroundColor = "#6BADCA";
-        this.style.borderColor = "#0000ff";
-        this.getElementsByTagName("span")[0].innerHTML = that._overText;
-        arrow.style.backgroundPosition = "0px -20px";
-      }
-
-      div.onmouseout = function(){
-        this.style.backgroundColor = "#EE5D5B";
-        this.style.borderColor = "#BC3B3A";
-        this.getElementsByTagName("span")[0].innerHTML = that._text;
-        arrow.style.backgroundPosition = "0px 0px";
-      }
-
-      mp.getPanes().labelPane.appendChild(div);
-      
-      return div;
-    }
-    ComplexCustomOverlay.prototype.draw = function(){
-      var map = this._map;
-      var pixel = map.pointToOverlayPixel(this._point);
-      this._div.style.left = pixel.x - parseInt(this._arrow.style.left) + "px";
-      this._div.style.top  = pixel.y - 30 + "px";
-    }
-    var txt = "银湖海岸城", mouseoverTxt = txt + " " + parseInt(Math.random() * 1000,10) + "套" ;
-        
-    var myCompOverlay = new ComplexCustomOverlay(new BMap.Point(116.407845,39.914101), "银湖海岸城",mouseoverTxt);
-
-    mp.addOverlay(myCompOverlay);
 
 </script>
