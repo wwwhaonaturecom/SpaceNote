@@ -59,6 +59,12 @@
 
 }
 
+.username{
+	margin-left: 10px;
+	font-family: 'roboto';
+}
+
+
 .passagebox{
 	display: flex;
 	flex-direction: row;
@@ -77,11 +83,6 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-}
-
-.username{
-	margin-left: 10px;
-	font-family: 'roboto';
 }
 
 .guide-bar{
