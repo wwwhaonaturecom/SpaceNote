@@ -39,6 +39,12 @@ Msgbox.prototype.initialize = function(map) {
         $("#dialogWindow")[0].style.visibility = "";
     };
 
+    div.ontouch = function() {
+        $("#dialogUserimg")[0].src = this.childNodes[0].childNodes[0].childNodes[0].childNodes[0].src;
+        $("#dialogPassage")[0].innerHTML = this.childNodes[0].childNodes[1].childNodes[0].innerHTML;
+        $("#dialogUsername")[0].innerHTML = this.childNodes[0].childNodes[0].childNodes[1].innerHTML;
+        $("#dialogWindow")[0].style.visibility = "";
+    };
 
     var img = document.createElement("img");
     img.src = this._imgsrc;

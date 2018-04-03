@@ -83,6 +83,18 @@
 	margin-left: 10px;
 }
 
+.guide-bar{
+	z-index: 40; 
+	height: 48px; 
+	width: 100%; 
+	background-color: #3498D8; 
+	top: 0px; 
+	position:absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .text{
 	/*width: 160px;*/
 	/*height: 125px;*/
