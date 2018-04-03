@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/user.css">
 <link rel="stylesheet" type="text/css" href="css/sidenav.css">
+<link href="./jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	  rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/animation.css">
@@ -20,7 +21,7 @@
 <style type="text/css">  
 	html{height:100%;}  
 	body{height:100%;margin:0px;padding:0px;}  
-	span{z-index: 1000 !important;}
+	span{z-index: 40 !important;}
 
 	#container{height:100%}  
 </style>  
@@ -88,6 +89,13 @@
 	</div>
 
 	<h1 id="alert"></h1>
+
+<!-- 时间轴 -->
+<div id="time-slider"></div>
+<div>
+	<label for="select-slider">Donation amount ($50 increments):</label>
+	<input type="text" id="select-slider" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</div>
 
 	<!-- 模糊背景 -->
 	<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;z-index: 50;" onclick="hide_all()"></div>
