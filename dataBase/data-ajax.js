@@ -52,7 +52,6 @@ function uploadData() {
         Alt = 0;
         var itemPicSrc = UID.toString() + ".png";
  
-
         $.ajax({
             url: uploadURL,        
             type: "post",
