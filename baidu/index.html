@@ -9,8 +9,11 @@
 <link rel="stylesheet" type="text/css" href="css/user.css">
 <link rel="stylesheet" href="./jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" type="text/css" href="css/sidenav.css">
 <link rel="stylesheet" type="text/css" href="css/animation.css">
-<link rel="stylesheet" type="text/css" href="css3-mobile-slider-menu/css/default.css">
+<link rel="stylesheet" href="materialize/css/materialize.min.css">
+<script src="materialize/js/materialize.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="css3-mobile-slider-menu/css/default.css"> -->
 
 <title>SpaceNote alpha</title>
 
@@ -66,7 +69,7 @@
 </script>
 </head>  
 <body>  
-<div id="loadScreen" class="animated fadeout" style="height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 999;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
+<div id="loadScreen" class="animated fadeout" style=" height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 999;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
 	<div class='base'>
 	<div class='cube' style="top:-100px;left: -100px;background-image: url(img/logo.png);background-size:100% 100%;  "></div>
 	</div>
@@ -75,6 +78,31 @@
 	<h4 style="color: white;">少女祈祷中...</h4>
 
 </div>
+
+
+
+<div class="mobile">
+	<!-- Checkbox to toggle the menu -->
+	<input type="checkbox" id="tm" style="display:none;"/>
+	<!-- The menu -->
+	<ul class="sidenav">
+		<li><img src="img/logo.png" style="height:150px;width:150px;"></li>
+		<li class="waves-effect waves-light btn"><a href="#" ><i class="material-icons md-18">sms</i><b >我的回复</b></a></li>
+		<li class="waves-effect waves-light btn active"><a href="#"><i class="material-icons md-18">map</i><b>数字地图</b></a></li>
+		<li class="waves-effect waves-light btn"><a href="#"><i class="material-icons md-18">terrain</i><b>卫星地图</b></a></li>
+		<li class="waves-effect waves-light btn"><a href="#"><i class="material-icons md-18">help</i><b>使用帮助</b></a></li>
+	</ul>
+	<!-- Content area -->
+	<section>
+
+	<div class="guide-bar md-shadow-nav">
+		<div class="guide-btn" style="margin-left:5px;">
+			<label for="tm" style="display:flex; flex-direction:column; align-items: center; justify-content:center; height:30px;width:30px;">
+				<i class="material-icons" style="font-size: 20px; color: white;" onclick="">menu</i>
+			</label>
+		</div>
+		<h6 style="color:white; font-size:18px;">间迹</h6>
+	</div>
 
 	<div id="container">baidu map</div> 
 
@@ -88,7 +116,7 @@
 			<span>发布</span>
 		</div>
 		<div class="icon-name-div">	
-			<i class="material-icons md-48 md-blue md-shadow-FAB-restingState" onclick="login_show()">account_circle</i>
+			<i class="material-icons md-48 md-blue md-shadow-FAB-restingState " onclick="login_show()">account_circle</i>
 			<span>登录</span>
 		</div>
 	</div>
@@ -123,8 +151,8 @@
 					<label class="login-field-icon fui-lock" for="login-pass"></label>
 				</div>
 
-				<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)" onclick="login()">登录</a>
-				<a class="btn btn-primary btn-large btn-block" style="background-color: white;border-style: solid;border-color: #3498DB;border-width: 2px;color: #3498DB;margin-top: 10px; " href="#">注册</a>
+				<a class="btn-post btn-primary btn-large btn-block" href="javascript:void(0)" onclick="login()">登录</a>
+				<a class="btn-post btn-primary btn-large btn-block" style="background-color: white;border-style: solid;border-color: #3498DB;border-width: 2px;color: #3498DB;margin-top: 10px; " href="#">注册</a>
 				<a class="login-link" href="#">忘记密码</a>
 			</div>
 
@@ -138,7 +166,7 @@
 				<textarea id="post-input" class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
 			</div>
 			<div class="control-group">
-				<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)" onclick="uploadData()">发布</a>
+				<a class="btn-post btn-primary btn-large btn-block" href="javascript:void(0)" onclick="uploadData()">发布</a>
 			</div>
 		</div>
 		<div class="postbox_triangle_down"></div>
@@ -153,7 +181,7 @@
 				<p class="welcome"></p>
 			</div>		
 			<div class="control-group">
-				<a class="btn btn-primary btn-large btn-block" onclick="logout()" href="javascript:void(0)">注销</a>
+				<a class="btn-post btn-primary btn-large btn-block" onclick="logout()" href="javascript:void(0)">注销</a>
 			</div>
 		</div>
 	</div>
@@ -172,8 +200,9 @@
 			<div class="dialog-controlbox"></div>
 		</div>
 	</div>
-</section>
 
+</section>
+</div>
 </body>  
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
