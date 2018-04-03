@@ -244,21 +244,53 @@ map.panTo(result);
 
 
 // 添加自定义覆盖物  
-var range = 1; //设置范围
+var range = 1; //设置范围 单位 度
 var data = loadData(center.Lng, center.Lat, range); //加载数据点
 var msgboxHandle = new Array();
 var msgboxNum = 0;
 
-for (item in data) {
-    var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
-    var itemCoord_B = convertPointG2B(itemCoord_G);
-    var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
-    msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 100, 80, data[item].Note, itemPicSrc, data[item].Uname);
-    map.addOverlay(msgboxHandle[msgboxNum]);
-    msgboxNum++;
-}
+// for (item in data) {
+//     var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
+//     var itemCoord_B = convertPointG2B(itemCoord_G);
+//     var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
+//     msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 80, 80, data[item].Note, itemPicSrc, data[item].Uname);
+//     map.addOverlay(msgboxHandle[msgboxNum]);
+//     msgboxNum++;
+// }
+//slider selector
+$(function () {
+    $("#slider").slider({
+        range: "min",
+        value: 0,
+        min: -14,
+        max: 0,
+        step: 1,
+        slide: function (event, ui) {
+            $("#selected-date").val(ui.value);
+                        
+            //delete message
+            if(msgboxNum != 0){
+                map.clearOverlays();
+                msgboxNum = 0; 
+                msgboxHandle = [];
+            }
+            
+            //load message
+            var range = 1;
+            var data = loadData(center.Lng, center.Lat, range, ui.value);
+            for (item in data) {
+                var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
+                var itemCoord_B = convertPointG2B(itemCoord_G);
+                var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
+                msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 150, 100, data[item].Note, itemPicSrc, data[item].Uname);
+                map.addOverlay(msgboxHandle[msgboxNum]);
+                msgboxNum++;
+            }
+        }
+    });
+    $("#selected-date").val($("#slider").slider("value"));
+});
 
-//handle imghead error
 
 // newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
 // var msgbox = new Msgbox(Bcenter, 150, 100, "原始坐标（WGS84）", "res/1.png" , "azuse");
@@ -287,21 +319,4 @@ map.addOverlay(myPoint);
 myPoint.hide();
 
 gpsOn();
-
-$(function () {
-    $("#date-slider").slider({
-        range: "min",
-        value: 0,
-        min: -14,
-        max: 0,
-        step: 1,
-        slide: function (event, ui) {
-            $("#select-slider").val(ui.value);
-        }
-    });
-    $("#select-slider").val($("#date-slider").slider("value"));
-});
-// $('.headimg').error(function(){
-//     $(this).attr('src', "img/default.jpg");
-// })
 

@@ -75,7 +75,6 @@ function logout() {
 	sessionStorage.removeItem("loginStatus");
 	sessionStorage.removeItem("Uname");
 
-	sessionStorage.setItem("Uname", Uname);
 	userWindow.style.visibility = 'hidden';
 	blurOverlay.style.visibility = 'hidden';
 	$("p.welcome").html("");	

@@ -18,7 +18,6 @@
 <title>SpaceNote alpha</title>
 
 <!-- jquery -->
-
 <script src="js/prefixfree.min.js"></script>
 
 <style type="text/css">
@@ -49,10 +48,6 @@
 	}
 </script>
 
-<!-- slider selector -->
-<script>
-
-</script>
 </head>  
 <body>  
 <div id="loadScreen" class="animated fadeout" style=" height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 999;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
@@ -107,13 +102,24 @@
 		</div>
 	</div>
 
+<<<<<<< HEAD
 	<!-- 时间轴 -->
 	<div id="date-slider" style="z-index:40;"></div>
 	<div>
 		<label for="select-slider">selected date (1 day increments):</label>
 		<input type="text" id="select-slider" readonly style="border:0; color:#f6931f; font-weight:bold;">
-	</div>
+=======
+	<!-- <h1 id="alert"></h1> -->
 
+	<!-- 时间轴 -->
+	<div class="time-line">
+		<div id="slider"></div>
+		<div>
+			<label for="selected-date" style="color:black;">selected date (1 day increments):</label>
+			<input type="text" id="selected-date" readonly style="border:0; color:#f6931f; font-weight:bold;">
+		</div>
+>>>>>>> b9f390b47d1ba895a4e7e1a87cb61863cb01a164
+	</div>
 	<!-- 模糊背景 -->
 	<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;z-index: 50;" onclick="hide_all()"></div>
 
@@ -196,4 +202,5 @@
 <script type="text/javascript" src="js/coordtools.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+
 </html>
