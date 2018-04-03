@@ -55,7 +55,7 @@ function uploadData() {
             async: false,
             data: {"UID": UID, "Uname": Uname,"Note" : Note, "Lng": Lng, "Lat": Lat, "Alt": Alt},
             success: function(result){
-                alert(result);
+                document.getElementById("post-input").innerHTML = "";
                 msgboxHandle[msgboxNum] = new Msgbox(bpos, 150, 100, Note, itemPicSrc, Uname);
                 map.addOverlay(msgboxHandle[msgboxNum]);
                 msgboxNum++;
