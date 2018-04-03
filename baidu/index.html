@@ -98,7 +98,7 @@
 	<div class="placeHolder"></div>
 	<div class="post-screen md-shadow-dialogs" onclick="stopPropagation(event)">
 		<div class="control-group"> 
-			<textarea id="post-input" class="post-input" name="post_content" placeholder="有什么新鲜事？" required></textarea>
+			<textarea id="post-input" class="post-input" name="post_content" placeholder="有什么新鲜事？"></textarea>
 		</div>
 		<div class="control-group">
 			<a class="btn btn-primary btn-large btn-block" href="javascript:void(0)" onclick="uploadData()">发布</a>
@@ -120,6 +120,22 @@
 		</div>
 	</div>
 </div>
+
+<div id="dialogWindow" class="overlay dialog-window" style="visibility: hidden;" onclick="hide_all()">
+	<div class="dialog-screen md-shadow-dialogs" onclick="stopPropagation(event)">
+		<div class="dialog-userbox">
+			<div class="circle dialog-headimgbox">
+				<img id="dialogUserimg" class="userimg headimg" src="img/default.jpg" onerror="headimgNotFound();" alt="用户头像">
+			</div>
+			<p id="dialogUsername" class="dialog-username">username</p>
+		</div>
+		<div class="dialog-passagebox">
+			<p id="dialogPassage" class="dialog-passage">passage</p>
+		</div>
+		<div class="dialog-controlbox"
+	</div>
+</div>
+
 </body>  
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>

@@ -55,7 +55,7 @@
 	align-items: center;
 	height: 20px;
 	width: 100%;
-	background-color: rgb(179, 86, 129);
+	/* background-color: rgb(179, 86, 129); */
 
 }
 
@@ -311,4 +311,46 @@ span{
 	flex-direction: row-reverse;
 	justify-content: center;
 	align-items: center;
+}
+
+.dialog-window{
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.dialog-screen{
+	margin-top: 100px;
+	width: 80%;
+	height: 220px;
+	background-color: white;
+	border-radius: 2px;
+}
+
+.dialog-userbox{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: center;
+	align-items: center;
+}
+
+.dialog-headimgbox{
+	margin: 10px;
+}
+
+.dialog-passagebox{
+	overflow: hidden;
+	margin: 10px;
+	margin-top: 0px;
+}
+
+.dialog-passage{
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 100px;
+	margin: 0px;
+}
+
+.dialog-username{
+	margin: 0px;
 }

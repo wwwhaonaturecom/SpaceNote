@@ -5,6 +5,9 @@ function newMsgbox(map, center, width, height, text, imgsrc,username) {
     map.addOverlay(msgbox);
 }
 
+function setDialog(){
+    
+}
 
 // 定义自定义覆盖物的构造函数  
 function Msgbox(point, width, height, text, imgsrc,username) {
@@ -30,7 +33,10 @@ Msgbox.prototype.initialize = function(map) {
     div.style.height = this._height + "px";
     // div.style.zIndex = "999"; 
     div.onclick = function() {
-        alert('success');
+        $("#dialogUserimg")[0].src = this.childNodes[0].childNodes[0].childNodes[0].childNodes[0].src;
+        $("#dialogPassage")[0].innerHTML = this.childNodes[0].childNodes[1].childNodes[0].innerHTML;
+        $("#dialogUsername")[0].innerHTML = this.childNodes[0].childNodes[0].childNodes[1].innerHTML;
+        $("#dialogWindow")[0].style.visibility = "";
     };
 
 
@@ -73,6 +79,18 @@ Msgbox.prototype.initialize = function(map) {
 
     var controlbox = document.createElement('div');
     controlbox.className = controlbox.className + "controlbox";
+
+    var replynum = document.createElement('p');
+    replynum.style.fontSize = "12px";
+    replynum.innerHTML = "0";
+    replynum.style.margin = "2px";
+
+    var replyicon = document.createElement('i');
+    replyicon.innerHTML = "chat";
+    replyicon.className = "material-icons";
+    replyicon.style.fontSize = "12px";
+    controlbox.appendChild(replyicon);
+    controlbox.appendChild(replynum);
 
     var passagebox = document.createElement('div');
    	passagebox.appendChild(text);

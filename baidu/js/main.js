@@ -34,6 +34,8 @@ function post_show () {
     
 }
 
+
+
 ///////////////////////////////////////
 ///           customPoint           ///
 ///          支持自定义div           ///
@@ -202,7 +204,7 @@ welcome();
 
 $(".placeHolder")[0].style.height = document.body.clientHeight/2 - 230 + 'px';
 
-center = new Point(121.582086, 31.273069);
+center = new Point(121.209, 31.2895);
 var map = new BMap.Map("container", {
     enableMapClick: false
 });
@@ -211,7 +213,7 @@ var map = new BMap.Map("container", {
 var Bcenter = new BMap.Point(center.Lng, center.Lat);
 var result = convertPointG2B(Bcenter);
 // 创建点坐标  
-map.centerAndZoom(Bcenter, 15);
+map.centerAndZoom(Bcenter, 17);
 map.enableDragging();
 map.enableScrollWheelZoom(true);
 map.setCenter(result);
@@ -229,26 +231,27 @@ var msgboxHandle = new Array();
 var msgboxNum = 0;
 
 for (item in data) {
-    var itemCoord = new BMap.Point(data[item].Lng, data[item].Lat);
-    var itemPicSrc = data[item].UID.toString() + ".png";
-    msgboxHandle[msgboxNum] = new Msgbox(itemCoord, 150, 100, data[item].Note, itemPicSrc, data[item].Uname);
+    var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
+    var itemCoord_B = convertPointG2B(itemCoord_G);
+    var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
+    msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 150, 100, data[item].Note, itemPicSrc, data[item].Uname);
     map.addOverlay(msgboxHandle[msgboxNum]);
     msgboxNum++;
 }
 
 //handle imghead error
 
-newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
-var msgbox = new Msgbox(Bcenter, 150, 100, "原始坐标（WGS84）", "res/1.png" , "azuse");
-map.addOverlay(msgbox);
-var marker2 = new BMap.Marker(Bcenter);
-map.addOverlay(marker2);
+// newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
+// var msgbox = new Msgbox(Bcenter, 150, 100, "原始坐标（WGS84）", "res/1.png" , "azuse");
+// map.addOverlay(msgbox);
+// var marker2 = new BMap.Marker(Bcenter);
+// map.addOverlay(marker2);
 
-newMsgbox(map, result, 150, 100, "转换坐标（BD）一大段测试文字来测试文本框最多能放多少字", "res/2.png" , "azuse");
-var marker = new BMap.Marker(result);
-map.addOverlay(marker);
+// newMsgbox(map, result, 150, 100, "转换坐标（BD）一大段测试文字来测试文本框最多能放多少字", "res/2.png" , "azuse");
+// var marker = new BMap.Marker(result);
+// map.addOverlay(marker);
 var point2 = new BMap.Point(result.lng + 0.1, result.lat + 0.1);
-newMsgbox(map, point2, 150, 100, "测试", "res/3.png" , "azuse");
+// newMsgbox(map, point2, 150, 100, "测试", "res/3.png" , "azuse");
 
 
 
