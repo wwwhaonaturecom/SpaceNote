@@ -115,7 +115,8 @@ function updatePosition(pos) {
     var bpos = new convertPointG2B(position);
     myPoint.updatePoint(bpos);
     myPoint.show();
-    map.panTo(bpos);    
+    map.setZoom(18);    
+    map.panTo(bpos);  
     myPoint.draw();
     var h1 = document.getElementById("alert");
     if (h1 != null && pos != null)
@@ -235,7 +236,7 @@ for (item in data) {
     var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
     var itemCoord_B = convertPointG2B(itemCoord_G);
     var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
-    msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 150, 100, data[item].Note, itemPicSrc, data[item].Uname);
+    msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 80, 80, data[item].Note, itemPicSrc, data[item].Uname);
     map.addOverlay(msgboxHandle[msgboxNum]);
     msgboxNum++;
 }
@@ -297,6 +298,19 @@ myPoint.hide();
 
 gpsOn();
 
+$(function () {
+    $("#date-slider").slider({
+        range: "min",
+        value: 0,
+        min: -14,
+        max: 0,
+        step: 1,
+        slide: function (event, ui) {
+            $("#select-slider").val(ui.value);
+        }
+    });
+    $("#select-slider").val($("#date-slider").slider("value"));
+});
 // $('.headimg').error(function(){
 //     $(this).attr('src', "img/default.jpg");
 // })
