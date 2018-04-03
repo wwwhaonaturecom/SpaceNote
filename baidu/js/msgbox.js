@@ -51,7 +51,7 @@ Msgbox.prototype.initialize = function(map) {
     imgdiv.className = imgdiv.className + " circle-small";
     imgdiv.appendChild(img);
 
-    var username = document.createElement("h5");
+    var username = document.createElement("b");
     username.innerHTML = this._username;
     username.className = username.className + "username";
 
