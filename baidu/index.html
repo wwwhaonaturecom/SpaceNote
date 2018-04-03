@@ -7,32 +7,65 @@
 <link rel="stylesheet" type="text/css" href="css/post.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/user.css">
+<link rel="stylesheet" href="./jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" type="text/css" href="css/sidenav.css">
-<link href="./jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	  rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/animation.css">
 <link rel="stylesheet" href="materialize/css/materialize.min.css">
 <script src="materialize/js/materialize.min.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="css3-mobile-slider-menu/css/default.css"> -->
 
-<title>SpaceNote alpha</title>  
+<title>SpaceNote alpha</title>
 
-<style type="text/css">  
-	html{height:100%;}  
-	body{height:100%;margin:0px;padding:0px;}  
-	span{z-index: 40 !important;}
+<!-- jquery -->
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="./jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 
-	#container{height:100%}  
-</style>  
 <script src="js/prefixfree.min.js"></script>
+
+<style type="text/css">
+	html {
+		height: 100%;
+	}
+
+	body {
+		height: 100%;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	span {
+		z-index: 40 !important;
+	}
+
+	#container {
+		height: 100%
+	}
+</style>
 
 <script type="text/javascript">
 	document.onreadystatechange = function () {
-	    if (document.readyState === "complete") {
-	        $("#loadScreen")[0].style.zIndex = '-100';
-	    }
+		if (document.readyState === "complete") {
+			$("#loadScreen")[0].style.zIndex = '-100';
+		}
 	}
+</script>
+
+<!-- slider selector -->
+<script>
+	$(function () {
+		$("#date-slider").slider({
+			range: "min",
+			value: 0,
+			min: -14,
+			max: 0,
+			step: 1,
+			slide: function (event, ui) {
+				$("#select-slider").val(ui.value);
+			}
+		});
+		$("#select-slider").val($("#date-slider").slider("value"));
+	});
 </script>
 </head>  
 <body>  
@@ -90,12 +123,12 @@
 
 	<h1 id="alert"></h1>
 
-<!-- 时间轴 -->
-<div id="time-slider"></div>
-<div>
-	<label for="select-slider">Donation amount ($50 increments):</label>
-	<input type="text" id="select-slider" readonly style="border:0; color:#f6931f; font-weight:bold;">
-</div>
+	<!-- 时间轴 -->
+	<div id="date-slider"></div>
+	<div>
+		<label for="select-slider">selected date (1 day increments):</label>
+		<input type="text" id="select-slider" readonly style="border:0; color:#f6931f; font-weight:bold;">
+	</div>
 
 	<!-- 模糊背景 -->
 	<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;z-index: 50;" onclick="hide_all()"></div>
