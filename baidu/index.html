@@ -18,8 +18,6 @@
 <title>SpaceNote alpha</title>
 
 <!-- jquery -->
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="./jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 
 <script src="js/prefixfree.min.js"></script>
 
@@ -53,19 +51,7 @@
 
 <!-- slider selector -->
 <script>
-	$(function () {
-		$("#date-slider").slider({
-			range: "min",
-			value: 0,
-			min: -14,
-			max: 0,
-			step: 1,
-			slide: function (event, ui) {
-				$("#select-slider").val(ui.value);
-			}
-		});
-		$("#select-slider").val($("#date-slider").slider("value"));
-	});
+
 </script>
 </head>  
 <body>  
@@ -204,7 +190,8 @@
 </section>
 </div>
 </body>  
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="./jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
 <script type="text/javascript" src="js/tools.js"></script>
 <script type="text/javascript" src="js/msgbox.js"></script>

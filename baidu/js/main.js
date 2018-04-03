@@ -270,7 +270,19 @@ myPoint.hide();
 
 gpsOn();
 
-
+$(function () {
+    $("#date-slider").slider({
+        range: "min",
+        value: 0,
+        min: -14,
+        max: 0,
+        step: 1,
+        slide: function (event, ui) {
+            $("#select-slider").val(ui.value);
+        }
+    });
+    $("#select-slider").val($("#date-slider").slider("value"));
+});
 // $('.headimg').error(function(){
 //     $(this).attr('src', "img/default.jpg");
 // })
