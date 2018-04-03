@@ -257,6 +257,7 @@ var msgboxNum = 0;
 //     map.addOverlay(msgboxHandle[msgboxNum]);
 //     msgboxNum++;
 // }
+
 //slider selector
 $(function () {
     $("#slider").slider({

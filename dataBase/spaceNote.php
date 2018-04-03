@@ -49,13 +49,14 @@ class SpaceNote{
     function loadData($lngFrom,$lngTo,$latFrom,$latTo,$select){
         global $dataBuf;
         $today=date("Y-m-d");
-        $select_date = date("Y-m-d",strtotime($today + $select + "day"));
+        $select_date = date("Y-m-d",strtotime($today." ".$select." day"));
         $sql = "SELECT * FROM `spaceNoteData_demo` 
-        WHERE Longitude > $lngFrom and Longitude <= $lngTo and Latitude > $latFrom and Latitude <= $latTo and Time LIKE '".$select_date."'%;";
+        WHERE Longitude > $lngFrom and Longitude <= $lngTo and Latitude > $latFrom and Latitude <= $latTo and Time LIKE '".$select_date."%';";
+        //echo $sql;
         //根据经纬度筛选数据
         $result = mysqli_query($this->db->conn,$sql);
         if($result == null){
-            echo "error:".mysqli_error()."<br>";
+            echo "error:".mysqli_error($this->db->conn)."<br>";
         }
         //echo var_dump($result);
         $i = 0;
@@ -75,6 +76,7 @@ class SpaceNote{
 //           echo "dataBuf:";
         //    echo var_dump($dataBuf);
         }
+        
         //输出json格式字符串
         echo json_encode($dataBuf);        
 
