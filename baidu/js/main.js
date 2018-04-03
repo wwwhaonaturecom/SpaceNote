@@ -115,7 +115,8 @@ function updatePosition(pos) {
     var bpos = new convertPointG2B(position);
     myPoint.updatePoint(bpos);
     myPoint.show();
-    map.panTo(bpos);    
+    map.setZoom(18);    
+    map.panTo(bpos);  
     myPoint.draw();
     var h1 = document.getElementById("alert");
     if (h1 != null && pos != null)
