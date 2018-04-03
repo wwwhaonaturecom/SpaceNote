@@ -28,14 +28,32 @@ function post_show () {
 		postWindow.style.visibility = 'hidden';
 		blurOverlay.style.visibility = 'hidden';
     }
-    map.setZoom(18);
+    map.setZoom(19);
     
     bpos = convertPointG2B(position);
     map.panTo(bpos);
     
 }
 
+function satellite(){
+    $("div[title='显示卫星影像']")[0].onclick();
+    $(":contains('卫星')").trigger("select");
+}
 
+function setmap(type){
+    if(type == "satellite"){
+        $("div[title='显示卫星影像']")[0].onclick();
+        $("#satellitemap").addClass("active");
+        $("#digitalmap").removeClass("active");
+    }
+
+    if(type == "digital"){
+        $("div[title='显示普通地图']")[0].onclick();
+        $("#digitalmap").addClass("active");
+        $("#satellitemap").removeClass("active");
+    }
+
+}
 
 ///////////////////////////////////////
 ///           customPoint           ///
@@ -118,13 +136,6 @@ function updatePosition(pos) {
     map.setZoom(18);    
     map.panTo(bpos);  
     myPoint.draw();
-    var h1 = document.getElementById("alert");
-    if (h1 != null && pos != null)
-        h1.innerHTML = pos.coords.longitude.toString() + " " + pos.coords.latitude.toString();
-    else{
-        alert("gps locating failed");
-        clearInterval(updateLocationInterval);  
-    }
     updatingGPS = 0;
     $("#gpsicon").removeClass("loading");    
 }
@@ -216,6 +227,12 @@ var Bcenter = new BMap.Point(center.Lng, center.Lat);
 var result = convertPointG2B(Bcenter);
 // 创建点坐标  
 map.centerAndZoom(result, 17);
+map.addControl(new BMap.MapTypeControl({
+    mapTypes:[
+      BMAP_SATELLITE_MAP,
+      BMAP_NORMAL_MAP,
+      BMAP_HYBRID_MAP
+    ]}));	
 map.enableDragging();
 map.enableScrollWheelZoom(true);
 map.setCenter(result);
@@ -264,6 +281,7 @@ myPointDiv.className = myPointDiv.className + "myPoint";
 myPointDiv.style.height = '20px';
 myPointDiv.style.width = '20px';
 myPointDiv.style.position = 'absolute';
+myPointDiv.style.zIndex = '10000';
 var myPoint = new customPoint(position, myPointDiv);
 map.addOverlay(myPoint);
 myPoint.hide();

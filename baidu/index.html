@@ -74,8 +74,8 @@
 	<ul class="sidenav">
 		<li><img src="img/logo.png" style="height:150px;width:150px;"></li>
 		<li class="waves-effect waves-light btn"><a href="#" ><i class="material-icons md-18">sms</i><b >我的回复</b></a></li>
-		<li class="waves-effect waves-light btn active"><a href="#"><i class="material-icons md-18">map</i><b>数字地图</b></a></li>
-		<li class="waves-effect waves-light btn"><a href="#"><i class="material-icons md-18">terrain</i><b>卫星地图</b></a></li>
+		<li id="digitalmap" class="waves-effect waves-light btn active"><a href="#" onclick="setmap('digital')"><i class="material-icons md-18">map</i><b>数字地图</b></a></li>
+		<li id="satellitemap" class="waves-effect waves-light btn"><a href="#" onclick="setmap('satellite')"><i class="material-icons md-18">terrain</i><b>卫星地图</b></a></li>
 		<li class="waves-effect waves-light btn"><a href="#"><i class="material-icons md-18">help</i><b>使用帮助</b></a></li>
 	</ul>
 	<!-- Content area -->
@@ -107,10 +107,8 @@
 		</div>
 	</div>
 
-	<h1 id="alert"></h1>
-
 	<!-- 时间轴 -->
-	<div id="date-slider"></div>
+	<div id="date-slider" style="z-index:40;"></div>
 	<div>
 		<label for="select-slider">selected date (1 day increments):</label>
 		<input type="text" id="select-slider" readonly style="border:0; color:#f6931f; font-weight:bold;">

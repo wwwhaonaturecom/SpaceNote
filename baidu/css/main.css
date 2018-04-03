@@ -86,7 +86,7 @@
 }
 
 .guide-bar{
-	z-index: 40; 
+	z-index: 100; 
 	height: 48px; 
 	width: 100%; 
 	background-color: #3498D8; 
@@ -119,7 +119,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	z-index: 120;
+	z-index: 80;
 }
 
 .bottom_btn{
@@ -364,4 +364,8 @@ span{
 
 .anchorBL{
 	visibility: hidden !important;
+}
+
+.anchorTR{
+	display: none;
 }
