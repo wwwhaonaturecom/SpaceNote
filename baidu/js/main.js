@@ -7,6 +7,20 @@ function welcome() {
     }    
 }
 
+//time-slider
+$( function() {
+    $( "#date-slider" ).slider({
+      value:100,
+      min: 0,
+      max: 14,
+      step: 1,
+      slide: function( event, ui ) {
+        $( "#select-date" ).val( "$" + ui.value );
+      }
+    });
+    $( "#select-date" ).val( "$" + $( "#date-slider" ).slider( "value" ) );
+  } );
+
 //阻止冒泡
 function stopPropagation(e) {
     e.stopPropagation();

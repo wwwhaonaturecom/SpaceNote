@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="css/post.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/user.css">
+<link href="./jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	  rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/animation.css">
@@ -16,7 +17,7 @@
 <style type="text/css">  
 	html{height:100%;}  
 	body{height:100%;margin:0px;padding:0px;}  
-	span{z-index: 1000 !important;}
+	span{z-index: 40 !important;}
 
 	#container{height:100%}  
 </style>  
@@ -67,6 +68,14 @@
 
 <!-- 模糊背景 -->
 <div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;z-index: 50;" onclick="hide_all()"></div>
+
+<!-- 时间轴 -->
+<div id="time-slider"></div>
+<div>
+	<label for="select-slider">Donation amount ($50 increments):</label>
+	<input type="text" id="select-slider" readonly style="border:0; color:#f6931f; font-weight:bold;">
+</div>
+
 
 <div id="loginWindow" class="overlay login-window" style="visibility: hidden;margin: auto;top: 0;left: 0;right: 0;bottom: 0;" onclick="hide_all()">
 	<div class="login-screen md-shadow-dialogs" onclick="stopPropagation(event)">
@@ -122,7 +131,7 @@
 </div>
 
 <div id="dialogWindow" class="overlay dialog-window" style="visibility: hidden;" onclick="hide_all()">
-	<div class="dialog-screen md-shadow-dialogs" onclick="stopPropagation(event)">
+	<div class="dialog-screen md-shadow-dialogs" style="max-width: 400px;" onclick="stopPropagation(event)">
 		<div class="dialog-userbox">
 			<div class="circle dialog-headimgbox">
 				<img id="dialogUserimg" class="userimg headimg" src="img/default.jpg" onerror="headimgNotFound();" alt="用户头像">

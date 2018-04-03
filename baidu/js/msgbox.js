@@ -32,18 +32,12 @@ Msgbox.prototype.initialize = function(map) {
     div.style.width = this._width + "px";
     div.style.height = this._height + "px";
     // div.style.zIndex = "999"; 
+    
     div.onclick = function() {
         $("#dialogUserimg")[0].src = this.childNodes[0].childNodes[0].childNodes[0].childNodes[0].src;
         $("#dialogPassage")[0].innerHTML = this.childNodes[0].childNodes[1].childNodes[0].innerHTML;
         $("#dialogUsername")[0].innerHTML = this.childNodes[0].childNodes[0].childNodes[1].innerHTML;
-        $("#dialogWindow")[0].style.visibility = "";
-    };
-
-    div.ontouch = function() {
-        $("#dialogUserimg")[0].src = this.childNodes[0].childNodes[0].childNodes[0].childNodes[0].src;
-        $("#dialogPassage")[0].innerHTML = this.childNodes[0].childNodes[1].childNodes[0].innerHTML;
-        $("#dialogUsername")[0].innerHTML = this.childNodes[0].childNodes[0].childNodes[1].innerHTML;
-        $("#dialogWindow")[0].style.visibility = "";
+        $("#dialogWindow")[0].style.visibility = "visible";
     };
 
     var img = document.createElement("img");
