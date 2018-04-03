@@ -8,36 +8,27 @@
 const uploadURL = "../dataBase/upload.php";
 const downloadURL = "../dataBase/download.php";
 
-function loadData(Lng, Lat, Rng, Ref = false) { //Rng为距离中心点的距离（水平竖直方向）
-    var jsonData;//可设为全局变量
-    if (Ref == true) {//清空表
-        $(".nearby-data").empty();
-        return null;
-    }
-
-    // xmlhttp = getXMLHttpRequest();
+function loadData(Lng, Lat, Rng, Slt = 0) { //Rng为距离中心点的距离（水平竖直方向）
+    var jsonData;
 
     $.ajax({
         url: downloadURL,        
         type: "get",
         dataType: "json",
         async: false,
-        data: "Longitude="+Lng+"&Latitude="+Lat+"&Range="+Rng,
+        data: "Longitude="+Lng+"&Latitude="+Lat+"&Range="+Rng+"&Select="+Slt,
         success: function(data,status){
             jsonData = eval(data);          //将data字符串转换为json数组       
-                 
         },
         error: function (XMLHttpRequest, textStatus, errorThrown){
-            $(".nearby-data").append("<tr><td>status:" + XMLHttpRequest.status + "</td><td>" + textStatus + "</td></tr>");    
+            $(".nearby-data").append("status:" + XMLHttpRequest.status + "\n" + textStatus + "</td></tr>");    
         }
     });
     return jsonData;
     
-    // xmlhttp.open("GET", downloadURL + "?Longitude=" + Lng + "&Latitude=" + Lat + "&sid=" + Math.random(), true);
-    // xmlhttp.send();
 }
 
-//
+
 function uploadData() {
 
     if(sessionStorage["loginStatus"] == "true" && $("#gpsicon")[0].innerHTML == "gps_fixed"){

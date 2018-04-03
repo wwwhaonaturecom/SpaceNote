@@ -51,22 +51,6 @@
 	}
 </script>
 
-<!-- slider selector -->
-<script>
-	$(function () {
-		$("#date-slider").slider({
-			range: "min",
-			value: 0,
-			min: -14,
-			max: 0,
-			step: 1,
-			slide: function (event, ui) {
-				$("#select-slider").val(ui.value);
-			}
-		});
-		$("#select-slider").val($("#date-slider").slider("value"));
-	});
-</script>
 </head>  
 <body>  
 <div id="loadScreen" class="animated fadeout" style=" height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 999;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
@@ -212,4 +196,5 @@
 <script type="text/javascript" src="js/coordtools.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+
 </html>

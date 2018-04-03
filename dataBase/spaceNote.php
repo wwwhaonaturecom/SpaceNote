@@ -46,9 +46,9 @@ class SpaceNote{
         return $s;
     }
 
-    function loadData($lngFrom,$lngTo,$latFrom,$latTo){
-        // echo "loadData start<br>";
+    function loadData($lngFrom,$lngTo,$latFrom,$latTo,$select){
         global $dataBuf;
+        $Time = date("Y-m-d");
         $sql = "SELECT * FROM `spaceNoteData_demo` 
         WHERE Longitude > $lngFrom and Longitude <= $lngTo and Latitude > $latFrom and Latitude <= $latTo;";
         //根据经纬度筛选数据
