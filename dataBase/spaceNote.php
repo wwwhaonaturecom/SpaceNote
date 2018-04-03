@@ -48,9 +48,10 @@ class SpaceNote{
 
     function loadData($lngFrom,$lngTo,$latFrom,$latTo,$select){
         global $dataBuf;
-        $Time = date("Y-m-d");
+        $today=date("Y-m-d");
+        $select_date = date("Y-m-d",strtotime($today + $select + "day"));
         $sql = "SELECT * FROM `spaceNoteData_demo` 
-        WHERE Longitude > $lngFrom and Longitude <= $lngTo and Latitude > $latFrom and Latitude <= $latTo;";
+        WHERE Longitude > $lngFrom and Longitude <= $lngTo and Latitude > $latFrom and Latitude <= $latTo and Time LIKE '".$select_date."'%;";
         //根据经纬度筛选数据
         $result = mysqli_query($this->db->conn,$sql);
         if($result == null){

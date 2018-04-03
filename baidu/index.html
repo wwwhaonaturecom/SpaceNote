@@ -18,7 +18,6 @@
 <title>SpaceNote alpha</title>
 
 <!-- jquery -->
-
 <script src="js/prefixfree.min.js"></script>
 
 <style type="text/css">
@@ -103,15 +102,16 @@
 		</div>
 	</div>
 
-	<h1 id="alert"></h1>
+	<!-- <h1 id="alert"></h1> -->
 
 	<!-- 时间轴 -->
-	<div id="date-slider"></div>
-	<div>
-		<label for="select-slider">selected date (1 day increments):</label>
-		<input type="text" id="select-slider" readonly style="border:0; color:#f6931f; font-weight:bold;">
+	<div class="time-line">
+		<div id="slider"></div>
+		<div>
+			<label for="selected-date" style="color:black;">selected date (1 day increments):</label>
+			<input type="text" id="selected-date" readonly style="border:0; color:#f6931f; font-weight:bold;">
+		</div>
 	</div>
-
 	<!-- 模糊背景 -->
 	<div id="blurOverlay" style="position: absolute;top: 0px;left: 0px;height: 100%;width: 100%;background-color: black;opacity: 0.4;visibility: hidden;z-index: 50;" onclick="hide_all()"></div>
 
