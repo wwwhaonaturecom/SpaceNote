@@ -1,16 +1,4 @@
-<!doctype html>
-<html lang="zh">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>CSS3手机端侧滑菜单 4种滑动菜单特效DEMO演示</title>
-	<!--<link rel="stylesheet" type="text/css" href="css/normalize.css" />-->
-	<link rel="stylesheet" type="text/css" href="css/default.css">
-	<style type="text/css">
-	/*Fontawesome Iconfont*/
-	/*Montserrat, Open Sans*/
-	* {margin: 0; padding: 0;}
+* {margin: 0; padding: 0;}
 	#wrapper {width: 645px; height: 500px; margin: 35px auto 50px auto;}
 	h2 {
 		color: #fff; font: 300 40px 'Open Sans';
@@ -34,10 +22,10 @@
 	}
 	.mobile section label {
 		color: white; font: bold 14px Montserrat; text-align: center;
-		border: 2px solid white; border-radius: 4px;
-		display: block; padding: 10px 0;
-		width: 60%; position: absolute; left: 20%; top: 100px;
-		cursor: pointer; text-transform: uppercase;
+		
+		display: block;
+        cursor: pointer; text-transform: uppercase;
+        width: 40px;
 	}
 	/*Nav styles*/
 	.sidenav {
@@ -68,31 +56,3 @@
 	#tm:checked ~ .sidenav li:nth-child(4) b {transition-delay: 0.32s;}
 	#tm:checked ~ .sidenav li:nth-child(5) b {transition-delay: 0.40s;}
 	#tm:checked ~ .sidenav li:nth-child(6) b {transition-delay: 0.48s;}
-	</style>
-	<!--[if IE]>
-		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
-	<![endif]-->
-</head>
-<body style="height: 800px;">
-	<div class="mobile">
-		<!-- Checkbox to toggle the menu -->
-		<input type="checkbox" id="tm" />
-		<!-- The menu -->
-		<ul class="sidenav">
-			<li><a href="#"><i class="fa fa-check"></i><b>Tasks</b></a></li>
-			<li><a href="#"><i class="fa fa-inbox"></i><b>Messages</b></a></li>
-			<li><a href="#"><i class="fa fa-pencil"></i><b>New Post</b></a></li>
-			<li><a href="#"><i class="fa fa-cog"></i><b>Settings</b></a></li>
-			<li><a href="#"><i class="fa fa-star"></i><b>Starred</b></a></li>
-			<li><a href="#"><i class="fa fa-power-off"></i><b>Logout</b></a></li>
-		</ul>
-		<!-- Content area -->
-		<section>
-			<!-- Label for #tm checkbox -->
-			<label for="tm"><h1>text</h1></label>
-
-		</section>
-	</div>
-			
-</body>
-</html>

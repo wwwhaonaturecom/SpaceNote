@@ -7,10 +7,11 @@
 <link rel="stylesheet" type="text/css" href="css/post.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/user.css">
+<link rel="stylesheet" type="text/css" href="css/sidenav.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	  rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/animation.css">
-<link rel="stylesheet" type="text/css" href="css3-mobile-slider-menu/css/default.css">
+<!-- <link rel="stylesheet" type="text/css" href="css3-mobile-slider-menu/css/default.css"> -->
 
 <title>SpaceNote alpha</title>  
 
@@ -32,7 +33,7 @@
 </script>
 </head>  
 <body>  
-<div id="loadScreen" class="animated fadeout" style="height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 999;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
+<div id="loadScreen" class="animated fadeout" style="visibility:; height: 100%;width: 100%;background-color: #3498DB;opacity: 1;z-index: 999;display: flex;flex-direction: column;justify-content: center;align-items: center;position: absolute;left: 0px;top: 0px;">
 	<div class='base'>
 	<div class='cube' style="top:-100px;left: -100px;background-image: url(img/logo.png);background-size:100% 100%;  "></div>
 	</div>
@@ -41,6 +42,29 @@
 	<h4 style="color: white;">少女祈祷中...</h4>
 
 </div>
+
+
+
+<div class="mobile">
+	<!-- Checkbox to toggle the menu -->
+	<input type="checkbox" id="tm" style="display:none;"/>
+	<!-- The menu -->
+	<ul class="sidenav">
+		<li><a href="#"><i class="fa fa-check"></i><b>Tasks</b></a></li>
+		<li><a href="#"><i class="fa fa-inbox"></i><b>Messages</b></a></li>
+		<li><a href="#"><i class="fa fa-pencil"></i><b>New Post</b></a></li>
+		<li><a href="#"><i class="fa fa-cog"></i><b>Settings</b></a></li>
+		<li><a href="#"><i class="fa fa-star"></i><b>Starred</b></a></li>
+		<li><a href="#"><i class="fa fa-power-off"></i><b>Logout</b></a></li>
+	</ul>
+	<!-- Content area -->
+	<section>
+
+	<div class="guide-bar md-shadow-nav">
+		<div class="guide-btn" style="margin-left:5px;">
+			<label for="tm"><i class="material-icons" style="font-size: 36px; color: white;" onclick="">reorder</i></label>
+		</div>
+	</div>
 
 	<div id="container">baidu map</div> 
 
@@ -131,8 +155,9 @@
 			<div class="dialog-controlbox"></div>
 		</div>
 	</div>
-</section>
 
+</section>
+</div>
 </body>  
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=33X0NsFGdzK75bVRULnf3zGt4Os450GW"></script>
