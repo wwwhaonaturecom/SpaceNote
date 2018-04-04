@@ -31,6 +31,7 @@ Msgbox.prototype.initialize = function(map) {
     div.style.position = "absolute";
     div.style.width = this._width + "px";
     div.style.height = this._height + "px";
+    div.style.cursor = "pointer";
     // div.style.zIndex = "999"; 
     
     div.onclick = function() {
