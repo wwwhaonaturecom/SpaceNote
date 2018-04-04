@@ -41,6 +41,7 @@ Msgbox.prototype.initialize = function(map) {
         $("#dialogWindow")[0].style.visibility = "visible";
     };
     div.addEventListener("click",msgboxClick,false);
+    div.addEventListener("touchstart",msgboxClick,false);
 
     var img = document.createElement("img");
     img.src = this._imgsrc;
