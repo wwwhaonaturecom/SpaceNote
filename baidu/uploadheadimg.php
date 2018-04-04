@@ -2,7 +2,7 @@
     $file = $_FILES['file'];//得到传输的数据
     //得到文件名称
     $name = $file['name'];
-    $username = $_POST['username'];
+    $username = $_POST['username'] + ".png";
     $type = strtolower(substr($name,strrpos($name,'.')+1)); //得到文件类型，并且都转化成小写
     $allow_type = array('jpg','jpeg','gif','png'); //定义允许上传的类型
     //判断文件类型是否被允许上传
