@@ -291,6 +291,7 @@ $(function () {
                 map.addOverlay(msgboxHandle[msgboxNum]);
                 msgboxNum++;
             }
+            map.addOverlay(myPoint);
         }
     });
     $("#selected-date").val($("#slider").slider("value"));
