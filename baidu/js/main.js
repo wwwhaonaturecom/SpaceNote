@@ -309,7 +309,7 @@ $(function () {
     $("#selected-date").val($("#slider").slider("value"));
 });
 
-var data = loadData(center.Lng, center.Lat, "min", 0);
+var data = loadData(center.Lng, center.Lat, 1, 0);
 for (item in data) {
     var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
     var itemCoord_B = convertPointG2B(itemCoord_G);
