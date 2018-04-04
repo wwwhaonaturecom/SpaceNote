@@ -66,6 +66,7 @@ function login() {
 	}
 	//插入欢迎页面
 	$("p.welcome").html("你好！"+Uname);
+	$("#usernameupload")[0].value = Uname;
 }
 
 function logout() {
