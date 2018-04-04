@@ -55,6 +55,23 @@ function setmap(type){
 
 }
 
+$("#selected-date").bind("propertychange input",function(){
+    if(this.value == 0)
+        $("#timelineLabel").innerHTML = "时间轴:今天";
+    else if(this.value == -1)
+        $("#timelineLabel").innerHTML = "时间轴:昨天";
+    else if(this.value == -2)
+        $("#timelineLabel").innerHTML = "时间轴:前天";
+    else{
+        var month = date.getMonth() + 1;
+        var day = date.getDate() + int(this.value);
+        $("#timelineLabel").innerHTML = "时间轴:"+month+"月"+dat+"日";
+    }
+});
+  
+  
+
+
 ///////////////////////////////////////
 ///           customPoint           ///
 ///          支持自定义div           ///

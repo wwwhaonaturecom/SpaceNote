@@ -1,7 +1,7 @@
 .time-line {
 	z-index: 40; 
 	width: 100%; 
-	bottom: 0px; 
+	bottom: 20px; 
 	position:absolute;
 	display: flex;
 	flex-direction: column;
@@ -10,8 +10,28 @@
 }
 
 #slider {
-	width: 80%;
+	width: 55%;
+	position: relative;
+	left: -15%;
 }
+
+.time-line-content{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: left;
+}
+
+.time-line-content label{
+	background-color: white;
+	border: white 2px solid;
+	border-radius: 2px;
+	margin-top: 4px;
+	font-weight: 200 !important;
+	width: 70px;
+	cursor: default;
+}
+
 
 #selected-date {
 	height: 20px;
@@ -82,6 +102,7 @@
 .username{
 	margin-left: 10px;
 	font-family: 'roboto';
+	font-weight: 200;
 }
 
 
