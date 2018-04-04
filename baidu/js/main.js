@@ -338,5 +338,5 @@ myPoint.hide();
 
 gpsOn();
 
-var Uname = document.getElementById("login-name").value;
+var Uname = sessionStorage.getItem("Uname");
 if(Uname != undefined)$("img.userimg.headimg")[0].src = "img/" + Uname + ".png";
