@@ -215,6 +215,10 @@ var positionCache;
 //若已登陆设置用户欢迎窗口
 welcome();
 
+$(function() {  
+    FastClick.attach(document.body);  
+});  
+
 $(".placeHolder")[0].style.height = document.body.clientHeight/2 - 230 + 'px';
 
 center = new Point(121.209, 31.2895);
