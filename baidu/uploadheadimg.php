@@ -13,7 +13,7 @@ if(!is_uploaded_file($file['tmp_name'])){
   //如果不是通过HTTP POST上传的
   return ;
 }
-$upload_path = "D:/now/"; //上传文件的存放路径
+$upload_path = "img/"; //上传文件的存放路径
 //开始移动文件到相应的文件夹
 if(move_uploaded_file($file['tmp_name'],$upload_path.$file['name'])){
   echo "Successfully!";
