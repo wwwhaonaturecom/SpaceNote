@@ -157,13 +157,17 @@
 
 	<div id="userWindow" class="overlay user-window" style="visibility: hidden;" onclick="hide_all()">
 		<div class="user-screen md-shadow-dialogs" onclick="stopPropagation(event)">
-			<div class="control-group " style="display:flex;justify-content: left;flex-direction: row;align-items: flex-start;height: 250px;"> 
+			<div class="control-group " style="display:flex;justify-content: left;flex-direction: row;align-items: flex-start;"> 
 				<div class="circle" style="margin-right: 20px;">
 					<img class="userimg headimg" src="img/default.jpg" onerror="headimgNotFound();" alt="用户头像">
 				</div>
 				<p class="welcome"></p>
 			</div>		
-			<div class="control-group">
+			<form action="uploadheadimg.php" name="form" method="post" enctype="multipart/form-data">
+				<input type="file" name="file" />
+				<input type="submit" name="submit" value="上传头像" />
+			  </form>
+			<div class="control-group" style="position:absolute;bottom: 10px;">
 				<a class="btn-post btn-primary btn-large btn-block" onclick="logout()" href="javascript:void(0)">注销</a>
 			</div>
 		</div>
