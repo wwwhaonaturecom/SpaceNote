@@ -35,6 +35,7 @@ text-align: center;
 }
 .control-group {
 margin-bottom: 10px;
+position: relative;
 }
 
 .login-input {
