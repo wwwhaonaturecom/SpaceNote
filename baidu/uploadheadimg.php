@@ -21,5 +21,6 @@
     echo "Successfully!";
     }else{
     echo "Failed!";
+    echo $username;
     }
 ?>
