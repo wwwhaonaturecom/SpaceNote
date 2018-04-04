@@ -45,7 +45,7 @@ Msgbox.prototype.initialize = function(map) {
     div.addEventListener("touchstart",msgboxClick,false);
 
     var img = document.createElement("img");
-    img.src = this._imgsrc;
+    img.src = "img/" + this._username + ".png";
     img.className = img.className + " headimg";
     img.onerror = function(){
         $(this).attr('src', "img/default.jpg");

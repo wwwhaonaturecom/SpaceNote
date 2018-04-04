@@ -65,8 +65,9 @@ function login() {
 		blurOverlay.style.visibility = 'hidden';
 	}
 	//插入欢迎页面
-	$("p.welcome").html("你好！"+Uname);
+	$("p.welcome").html("你好！" + Uname);
 	$("#usernameupload")[0].value = Uname;
+	$("img.userimg.headimg")[0].src = "img/" + Uname + ".png";
 }
 
 function logout() {
