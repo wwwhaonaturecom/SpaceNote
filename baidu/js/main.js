@@ -309,7 +309,15 @@ $(function () {
     $("#selected-date").val($("#slider").slider("value"));
 });
 
-
+var data = loadData(center.Lng, center.Lat, "min", 0);
+for (item in data) {
+    var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
+    var itemCoord_B = convertPointG2B(itemCoord_G);
+    var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
+    msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 150, 100, data[item].Note, itemPicSrc, data[item].Uname);
+    map.addOverlay(msgboxHandle[msgboxNum]);
+    msgboxNum++;
+}
 // newMsgbox(map,Bcenter,100 ,100,"原始坐标（WGS84）","res/1.png");
 // var msgbox = new Msgbox(Bcenter, 150, 100, "原始坐标（WGS84）", "res/1.png" , "azuse");
 // map.addOverlay(msgbox);
