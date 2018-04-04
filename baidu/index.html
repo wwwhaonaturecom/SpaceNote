@@ -159,7 +159,7 @@
 		<div class="user-screen md-shadow-dialogs" onclick="stopPropagation(event)">
 			<div class="control-group " style="display:flex;justify-content: left;flex-direction: row;align-items: flex-start;"> 
 				<div class="circle" style="margin-right: 20px;">
-					<img class="userimg headimg" src="img/default.jpg" onerror="headimgNotFound();" alt="用户头像">
+					<img class="userimg headimg" src="img/default.jpg" onerror="function(){$(this).attr('src', 'img/default.jpg');};" alt="用户头像">
 				</div>
 				<p class="welcome"></p>
 			</div>		
@@ -168,6 +168,7 @@
 				<input id="usernameupload" type="text" name="username" style="display:none;" />
 				<input type="submit" name="submit" value="上传头像" />
 			  </form>
+			  <span>上传完成后，返回该页面再打开此窗口用相同用户名登录才会生效</span>
 			<div class="control-group" style="position:absolute;bottom: 10px;">
 				<a class="btn-post btn-primary btn-large btn-block" onclick="logout()" href="javascript:void(0)">注销</a>
 			</div>
