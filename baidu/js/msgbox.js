@@ -39,6 +39,7 @@ Msgbox.prototype.initialize = function(map) {
         $("#dialogPassage")[0].innerHTML = this.childNodes[0].childNodes[1].childNodes[0].innerHTML;
         $("#dialogUsername")[0].innerHTML = this.childNodes[0].childNodes[0].childNodes[1].innerHTML;
         $("#dialogWindow")[0].style.visibility = "visible";
+        this.style.zIndex = this.style.zIndex + 10000; 
     };
     div.addEventListener("click",msgboxClick,false);
     div.addEventListener("touchstart",msgboxClick,false);
