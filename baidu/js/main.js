@@ -299,7 +299,7 @@ $(function () {
                 var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
                 var itemCoord_B = convertPointG2B(itemCoord_G);
                 var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
-                msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 150, 100, data[item].Note, itemPicSrc, data[item].Uname);
+                msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 100, 80, data[item].Note, itemPicSrc, data[item].Uname);
                 map.addOverlay(msgboxHandle[msgboxNum]);
                 msgboxNum++;
             }
