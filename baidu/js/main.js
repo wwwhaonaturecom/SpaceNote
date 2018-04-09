@@ -270,7 +270,7 @@ $(function () {
         min: -14,
         max: 0,
         step: 1,
-        slide: function (event, ui) {
+        slide: async function (event, ui) {
             if(ui.value == 0)
                 $("#timelineLabel")[0].innerHTML = "时间轴:今天";
             else if(ui.value == -1)
@@ -293,8 +293,8 @@ $(function () {
             }
             
             //load message
-            var range = 1;
-            var data = loadData(center.Lng, center.Lat, range, ui.value);
+            var range = 0.5;
+            var data = await loadData(center.Lng, center.Lat, range, ui.value);
             for (item in data) {
                 var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
                 var itemCoord_B = convertPointG2B(itemCoord_G);
