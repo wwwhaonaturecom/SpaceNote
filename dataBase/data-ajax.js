@@ -91,10 +91,10 @@ function loadReply(replyID) { //Rng为距离中心点的距离（水平竖直方
     return jsonData;
 }
 
-function addReply(replyID, UID, Uname, Note) {
+function addReply() {
 
     if(sessionStorage["loginStatus"] == "true"){
-        var UID, Uname, Note, Lng, Lat, Alt;
+        var replyID, UID, Uname, Note;
         //UID = sessionStorage.getItem("UID");
         UID = "1650275";    //test
         Uname = sessionStorage.getItem("Uname");
