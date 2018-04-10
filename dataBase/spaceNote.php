@@ -75,6 +75,7 @@ class SpaceNote{
         {
             //$temp = new Item($row['UID'],$row['Uname'],$row['Note'],$row['Longitude'],$row['Latitude'],$row['Altitude'],$row['Time']);
             //先将结果放入一维数组中
+            $temp["ID"] = $row['ID'];
             $temp["UID"] = $row['UID'];
             $temp["Uname"] = $row['Uname'];
             $temp["Note"] = $row['Note'];
@@ -84,8 +85,6 @@ class SpaceNote{
             $temp["Time"] = $row['Time'];
             //放入二维数组dataBuf中
             $dataBuf[$i++] = $temp;
-//           echo "dataBuf:";
-        //    echo var_dump($dataBuf);
         }
         
         //输出json格式字符串

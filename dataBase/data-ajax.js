@@ -1,12 +1,12 @@
 ///////////////////////////////////////
 //与服务器请求数据时的ajax部分
 //回传数据为json格式的字符串 jsonData中为转换后的json数组
-//如需在其他位置使用时请设为全局变量
-//上传数据部分存在bug
 //kagaya 2018年4月1日
 //////////////////////////////////////
 const uploadURL = "../dataBase/upload.php";
 const downloadURL = "../dataBase/download.php";
+const addReplyURL = "../dataBase/add_reply.php";
+const loadReplyURL = "../dataBase/load_reply.php";
 
 function loadData(Lng, Lat, Rng, Slt = 0) { //Rng为距离中心点的距离（水平竖直方向）
     var jsonData;
@@ -25,7 +25,6 @@ function loadData(Lng, Lat, Rng, Slt = 0) { //Rng为距离中心点的距离（�
         }
     });
     return jsonData;
-    
 }
 
 
@@ -70,4 +69,59 @@ function uploadData() {
     }
     else if(sessionStorage["loginStatus"] != "true")alert("请先登录");
     else if($("#gpsicon")[0].innerHTML != "gps_fixed")alert("gps定位失败");
+}
+
+function loadReply(replyID) { //Rng为距离中心点的距离（水平竖直方向）
+    var jsonData;
+
+    $.ajax({
+        url: loadReplyURL,        
+        type: "post",
+        dataType: "json",
+        async: false,
+        data: {"replyID": replyID},
+        success: function(data,status){
+            jsonData = eval(data);          //将data字符串转换为json数组       
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown){
+            $(".nearby-data").append("status:" + XMLHttpRequest.status + "\n" + textStatus + "</td></tr>");    
+        }
+    });
+
+    return jsonData;
+}
+
+function addReply(replyID, UID, Uname, Note) {
+
+    if(sessionStorage["loginStatus"] == "true"){
+        var UID, Uname, Note, Lng, Lat, Alt;
+        //UID = sessionStorage.getItem("UID");
+        UID = "1650275";    //test
+        Uname = sessionStorage.getItem("Uname");
+        Note = "";
+
+        if(Note == "") {
+            alert("请输入回复");
+            return 
+        }
+
+        $.ajax({
+            url: addReplyURL,        
+            type: "post",
+            dataType:"text",
+            async: false,
+            data: {"replyID": replyID, "UID": UID, "Uname": Uname,"Note" : Note},
+            success: function(result){
+
+
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown){
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+            }
+        });
+    }
+    else if(sessionStorage["loginStatus"] != "true")alert("请先登录");
 }
