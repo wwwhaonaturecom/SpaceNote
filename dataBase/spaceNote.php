@@ -110,7 +110,7 @@ class SpaceNote{
 
     function saveReply($reply){
         //查询是否有该表
-        $sql = "SELECT table_name FROM information_schema.TABLES WHERE table_name =`SN_reply_".$reply->ID."`;";
+        $sql = "SELECT table_name FROM information_schema.TABLES WHERE table_name =`SN_reply_".$reply->replyID."`;";
         $result = mysqli_query($this->db->conn,$sql);
         if(!$result) {
             //回复楼层不存在，创建新表

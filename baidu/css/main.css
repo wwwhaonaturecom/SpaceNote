@@ -368,6 +368,7 @@ span{
 .dialog-screen{
 	margin-top: 100px;
 	width: 80%;
+	max-width: 300px;
 	height: 340px;
 	background-color: white;
 	border-radius: 2px;
@@ -435,7 +436,8 @@ span{
 	padding: 10px 5px;
 	height: 90px;
 	transition: border .5s;
-	margin: 10px;
+	margin: 5%;
+	width: 90%;
 }
 
 .reply-content-box:focus {
