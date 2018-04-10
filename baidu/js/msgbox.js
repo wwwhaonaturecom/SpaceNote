@@ -9,6 +9,45 @@ function setDialog(){
     
 }
 
+function generateRplyboxDiv(username, message){
+    var replybox = document.createElement("div");
+    replybox.className = "dialog-screen md-shadow-dialogs";
+    var replyuserbox = document.createElement("div");
+    replyuserbox.className = replyuserbox.className + "dialog-userbox";
+    var replyuserheadimg = document.createElement("div");
+    replyuserheadimg.className = replyuserheadimg.className + "circle dialog-headimgbox";
+    var headimg = document.createElement("img");
+    headimg.className = headimg.className + "userimg headimg";
+    headimg.onerror = function(){
+        $(this).attr('src', "img/default.jpg");
+    };
+    headimg.src = "img/" + username + ".png";
+    replyuserheadimg.appendChild(headimg);
+    replyuserbox.appendChild(replyuserheadimg);
+    var username = document.createElement("p");
+    username.className = username.className + "dialog-username";
+
+    var replymessagebox = document.createElement("div");
+    replymessagebox.className = replymessagebox.className + "dialog-passagebox";
+    var message = document.createElement("p");
+    message.className = message.className + "dialog-passage";
+    message.innerHTML = message;
+    replymessagebox.appendChild(message);
+
+    var replycontrolbox = document.createElement("div");
+    replycontrolbox.className = replycontrolbox.className + "dialog-controlbox";
+    var replybutton = document.createElement("a");
+    replybutton.className = replybutton.className + "waves-effect waves-light btn";
+    replybutton.innerHTML = "回复";
+    replycontrolbox.appendChild(replybutton);
+
+    replybox.appendChild(replyuserbox);
+    replybox.appendChild(replymessagebox);
+    replybox.appendChild(replycontrolbox);
+
+    return replybox;
+}
+
 // 定义自定义覆盖物的构造函数  
 function Msgbox(point, width, height, text, imgsrc, username, time, id) {
     this._id = id;
@@ -36,42 +75,7 @@ Msgbox.prototype.initialize = function(map) {
     div.style.cursor = "pointer";
     // div.style.zIndex = "999"; 
 
-    function showReply(username, message){
-        var replybox = document.createElement("div");
-        replybox.className = "dialog-screen md-shadow-dialogs";
-        var replyuserbox = document.createElement("div");
-        replyuserbox.className = replyuserbox.className + "dialog-userbox";
-        var replyuserheadimg = document.createElement("div");
-        replyuserheadimg.className = replyuserheadimg.className + "circle dialog-headimgbox";
-        var headimg = document.createElement("img");
-        headimg.className = headimg.className + "userimg headimg";
-        headimg.onerror = function(){
-            $(this).attr('src', "img/default.jpg");
-        };
-        headimg.src = "img/" + username + ".png";
-        replyuserheadimg.appendChild(headimg);
-        replyuserbox.appendChild(replyuserheadimg);
-        var username = document.createElement("p");
-        username.className = username.className + "dialog-username";
 
-        var replymessagebox = document.createElement("div");
-        replymessagebox.className = replymessagebox.className + "dialog-passagebox";
-        var message = document.createElement("p");
-        message.className = message.className + "dialog-passage";
-        message.innerHTML = message;
-        replymessagebox.appendChild(message);
-
-        var replycontrolbox = document.createElement("div");
-        replycontrolbox.className = replycontrolbox.className + "dialog-controlbox";
-        var replybutton = document.createElement("a");
-        replybutton.className = replybutton.className + "waves-effect waves-light btn";
-        replybutton.innerHTML = "回复";
-        replycontrolbox.appendChild(replybutton);
-
-        replybox.appendChild(replyuserbox);
-        replybox.appendChild(replymessagebox);
-        replybox.appendChild(replycontrolbox);
-    }
     
     function msgboxClick() {
         $("#dialogUserimg")[0].src = this.childNodes[0].childNodes[0].childNodes[0].childNodes[0].src;
@@ -81,6 +85,11 @@ Msgbox.prototype.initialize = function(map) {
         $("#blurOverlay")[0].style.visibility = "visible";
         this.style.zIndex = this.style.zIndex + 10000; 
         REPLYID = this.id;
+        var data = loadReply(REPLYID);
+        for(item in data){
+            var replydiv = generateRplyboxDiv(data[item].Uname, data[item].Note);
+            $("#reply-screen")[0].appendChild(replydiv);
+        }
     };
     div.addEventListener("click",msgboxClick,false);
     div.addEventListener("touchstart",msgboxClick,false);

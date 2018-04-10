@@ -96,10 +96,10 @@ function addReply() {
     if(sessionStorage["loginStatus"] == "true"){
         var replyID, UID, Uname, Note;
         //UID = sessionStorage.getItem("UID");
-        replyID = 
+        replyID = REPLYID;
         UID = "1650275";    //test
         Uname = sessionStorage.getItem("Uname");
-        Note = "";
+        Note = $("replycontent").value;
 
         if(Note == "") {
             alert("请输入回复");

@@ -55,12 +55,6 @@ function setmap(type){
 
 }
 
-function reply(){
-    var id = REPLYID;
-    var note = $("replycontent").innerHTML
-    addReply(id, UID, Uname, Note)
-}
-
 ///////////////////////////////////////
 ///           customPoint           ///
 ///          支持自定义div           ///
