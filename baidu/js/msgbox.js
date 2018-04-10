@@ -12,8 +12,8 @@ function setDialog(){
 // 定义自定义覆盖物的构造函数  
 function Msgbox(point, width, height, text, imgsrc,username) {
     this._point = point;
-    this._width = width;
-    this._height = height;
+    this._width = 150;
+    this._height = 100;
     this._text = text;
     this._imgsrc = imgsrc;
     this._length = width;
@@ -33,6 +33,43 @@ Msgbox.prototype.initialize = function(map) {
     div.style.height = this._height + "px";
     div.style.cursor = "pointer";
     // div.style.zIndex = "999"; 
+
+    function addReply(username, message){
+        var replybox = document.createElement("div");
+        replybox.className = "dialog-screen md-shadow-dialogs";
+        var replyuserbox = document.createElement("div");
+        replyuserbox.className = replyuserbox.className + "dialog-userbox";
+        var replyuserheadimg = document.createElement("div");
+        replyuserheadimg.className = replyuserheadimg.className + "circle dialog-headimgbox";
+        var headimg = document.createElement("img");
+        headimg.className = headimg.className + "userimg headimg";
+        headimg.onerror = function(){
+            $(this).attr('src', "img/default.jpg");
+        };
+        headimg.src = "img/" + username + ".png";
+        replyuserheadimg.appendChild(headimg);
+        replyuserbox.appendChild(replyuserheadimg);
+        var username = document.createElement("p");
+        username.className = username.className + "dialog-username";
+
+        var replymessagebox = document.createElement("div");
+        replymessagebox.className = replymessagebox.className + "dialog-passagebox";
+        var message = document.createElement("p");
+        message.className = message.className + "dialog-passage";
+        message.innerHTML = message;
+        replymessagebox.appendChild(message);
+
+        var replycontrolbox = document.createElement("div");
+        replycontrolbox.className = replycontrolbox.className + "dialog-controlbox";
+        var replybutton = document.createElement("a");
+        replybutton.className = replybutton.className + "waves-effect waves-light btn";
+        replybutton.innerHTML = "回复";
+        replycontrolbox.appendChild(replybutton);
+
+        replybox.appendChild(replyuserbox);
+        replybox.appendChild(replymessagebox);
+        replybox.appendChild(replycontrolbox);
+    }
     
     function msgboxClick() {
         $("#dialogUserimg")[0].src = this.childNodes[0].childNodes[0].childNodes[0].childNodes[0].src;
@@ -40,6 +77,7 @@ Msgbox.prototype.initialize = function(map) {
         $("#dialogUsername")[0].innerHTML = this.childNodes[0].childNodes[0].childNodes[1].innerHTML;
         $("#dialogWindow")[0].style.visibility = "visible";
         this.style.zIndex = this.style.zIndex + 10000; 
+
     };
     div.addEventListener("click",msgboxClick,false);
     div.addEventListener("touchstart",msgboxClick,false);
