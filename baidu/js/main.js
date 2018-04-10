@@ -350,6 +350,9 @@ myPoint.hide();
 gpsOn();
 
 var Uname = sessionStorage.getItem("Uname");
-if(Uname != undefined)$("img.userimg.headimg")[0].src = "img/" + Uname + ".png";
+if(Uname != undefined){
+    $("img.userimg.headimg")[0].src = "img/" + Uname + ".png";
+    $("#usernameupload")[0].value = Uname;
+}
 
 var REPLYID = 0;
