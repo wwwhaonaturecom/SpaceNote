@@ -123,6 +123,12 @@ function addReply() {
                 alert(textStatus);
             }
         });
+
+        var data = loadReply(REPLYID);
+        for(item in data){
+            var replydiv = generateRplyboxDiv(data[item].Uname, data[item].Note);
+            $("#reply-screen")[0].appendChild(replydiv);
+        }
     }
     else if(sessionStorage["loginStatus"] != "true")alert("请先登录");
 }
