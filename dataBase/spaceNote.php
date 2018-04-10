@@ -26,8 +26,9 @@ class Item{
 }
 
 class Reply{
-    public $UID,$Uname,$Content,$Time;
-    function __construct($UID,$Uname,$Content,$Time){
+    public $replyID,$UID,$Uname,$Content,$Time;
+    function __construct($replyID,$UID,$Uname,$Content,$Time){
+        $this->replyID = $replyID;
         $this->UID = $UID;
         $this->Uname = $Uname;
         $this->Note = $Content;
