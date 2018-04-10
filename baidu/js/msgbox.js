@@ -88,7 +88,7 @@ Msgbox.prototype.initialize = function(map) {
         var data = loadReply(REPLYID);
         for(item in data){
             var replydiv = generateRplyboxDiv(data[item].Uname, data[item].Note);
-            $("#reply-screen")[0].appendChild(replydiv);
+            $("#replyScreen")[0].appendChild(replydiv);
         }
     };
     div.addEventListener("click",msgboxClick,false);

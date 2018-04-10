@@ -31,7 +31,7 @@ class Reply{
         $this->replyID = $replyID;
         $this->UID = $UID;
         $this->Uname = $Uname;
-        $this->Note = $Content;
+        $this->Content = $Content;
         $this->Time = $Time;
     }
 }
@@ -114,19 +114,20 @@ class SpaceNote{
         $result = mysqli_query($this->db->conn,$sql);
         if(!$result) {
             //回复楼层不存在，创建新表
-            $sql = "CREATE TABLE `SN_reply_".$reply->ID."` 
+            $sql = "CREATE TABLE `SN_reply_".$reply->replyID."` 
             ( 
-                `ID` INT NOT NULL , 
+                `ID` INT NOT NULL AUTO_INCREMENT , 
                 `UID` CHAR(7) NULL DEFAULT NULL , 
                 `Uname` TINYTEXT NULL DEFAULT NULL , 
                 `Content` TEXT NULL DEFAULT NULL , 
-                `Time` TIMESTAMP NULL DEFAULT NULL , 
-                UNIQUE `ID` (`ID`)
+                `Time` TIMESTAMP NULL DEFAULT NULL,
+                PRIMARY KEY (`ID`) 
             ) ENGINE = InnoDB;";
+            $result = mysqli_query($this->db->conn,$sql);
         }
-
-        $sql = "INSERT INTO `SN_reply_".$reply->ID."`(`UID`,`Uname`,`Content`,`Time`) 
-        VALUES ('".$item->UID."','".$item->Uname."','".$item->Content."','".$item->Time."');";
+        echo 
+        $sql = "INSERT INTO `SN_reply_".$reply->replyID."`(`UID`,`Uname`,`Content`,`Time`) 
+        VALUES ('".$reply->UID."','".$reply->Uname."','".$reply->Content."','".$reply->Time."');";
         $result = mysqli_query($this->db->conn,$sql);
         
         if(!$result){
@@ -139,11 +140,11 @@ class SpaceNote{
 
     function loadReply($replyID){
         $dataBuf = array();
-        $sql = "SELECT * FROM `SN_reply_".$replyID.";";
+        $sql = "SELECT * FROM `SN_reply_".$replyID."`;";
 
         $result = mysqli_query($this->db->conn,$sql);
         if($result == null){
-            echo "error:".mysqli_error($this->db->conn)."<br>";
+            echo "error:".mysqli_error($this->db->conn);
         }
 
         $i = 0;
