@@ -148,6 +148,8 @@ Msgbox.prototype.initialize = function(map) {
     var messagetime = document.createElement("p");
     messagetime.className = "messagetime";
     messagetime.innerHTML = this._time;
+    messagetime.style.fontSize = "12px";
+    messagetime.style.margin = "2px";
 
     controlbox.appendChild(messagetime);
     controlbox.appendChild(replyicon);

@@ -437,6 +437,7 @@ span{
 	height: 90px;
 	transition: border .5s;
 	margin: 5%;
+	margin-bottom: 0px;
 	width: 90%;
 }
 
