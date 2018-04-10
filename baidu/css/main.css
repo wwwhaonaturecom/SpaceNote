@@ -368,7 +368,7 @@ span{
 .dialog-screen{
 	margin-top: 100px;
 	width: 80%;
-	height: 320px;
+	height: 34s0px;
 	background-color: white;
 	border-radius: 2px;
 }
@@ -423,4 +423,22 @@ span{
 	overflow-y: scroll;
 	margin: 0px;
 
+}
+
+.reply-content-box {
+	text-align: left;
+	background-color: #ECF0F1;
+	border: 2px solid transparent;
+	border-radius: 3px;
+	font-size: 16px;
+	font-weight: 200;
+	padding: 10px 5px;
+	height: 90px;
+	transition: border .5s;
+	padding: 10px;
+}
+
+.reply-content-box:focus {
+	border: 2px solid #3498DB;
+	box-shadow: none;
 }
