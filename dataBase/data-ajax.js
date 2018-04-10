@@ -96,6 +96,7 @@ function addReply() {
     if(sessionStorage["loginStatus"] == "true"){
         var replyID, UID, Uname, Note;
         //UID = sessionStorage.getItem("UID");
+        replyID = 
         UID = "1650275";    //test
         Uname = sessionStorage.getItem("Uname");
         Note = "";
