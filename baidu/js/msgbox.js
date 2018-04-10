@@ -10,7 +10,9 @@ function setDialog(){
 }
 
 // 定义自定义覆盖物的构造函数  
-function Msgbox(point, width, height, text, imgsrc,username) {
+function Msgbox(point, width, height, text, imgsrc, username, time, id) {
+    this._id = id;
+    this._time = time;
     this._point = point;
     this._width = 150;
     this._height = 100;
@@ -34,7 +36,7 @@ Msgbox.prototype.initialize = function(map) {
     div.style.cursor = "pointer";
     // div.style.zIndex = "999"; 
 
-    function addReply(username, message){
+    function showReply(username, message){
         var replybox = document.createElement("div");
         replybox.className = "dialog-screen md-shadow-dialogs";
         var replyuserbox = document.createElement("div");
@@ -76,11 +78,13 @@ Msgbox.prototype.initialize = function(map) {
         $("#dialogPassage")[0].innerHTML = this.childNodes[0].childNodes[1].childNodes[0].innerHTML;
         $("#dialogUsername")[0].innerHTML = this.childNodes[0].childNodes[0].childNodes[1].innerHTML;
         $("#dialogWindow")[0].style.visibility = "visible";
+        $("#blurOverlay")[0].style.visibility = "visible";
         this.style.zIndex = this.style.zIndex + 10000; 
-
+        REPLYID = this.id;
     };
     div.addEventListener("click",msgboxClick,false);
     div.addEventListener("touchstart",msgboxClick,false);
+    div.id = this._id;
 
     var img = document.createElement("img");
     img.src = "img/" + this._username + ".png";
@@ -131,6 +135,12 @@ Msgbox.prototype.initialize = function(map) {
     replyicon.innerHTML = "chat";
     replyicon.className = "material-icons";
     replyicon.style.fontSize = "12px";
+
+    var messagetime = document.createElement("p");
+    messagetime.className = "messagetime";
+    messagetime.innerHTML = this._time;
+
+    controlbox.appendChild(messagetime);
     controlbox.appendChild(replyicon);
     controlbox.appendChild(replynum);
 
