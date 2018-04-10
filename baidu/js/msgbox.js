@@ -9,9 +9,9 @@ function setDialog(){
     
 }
 
-function generateRplyboxDiv(username, message){
+function generateRplyboxDiv(USERNAME, MESSAGE){
     var replybox = document.createElement("div");
-    replybox.className = "dialog-screen md-shadow-dialogs";
+    replybox.className = "reply-box md-shadow-dialogs";
     var replyuserbox = document.createElement("div");
     replyuserbox.className = replyuserbox.className + "dialog-userbox";
     var replyuserheadimg = document.createElement("div");
@@ -26,12 +26,14 @@ function generateRplyboxDiv(username, message){
     replyuserbox.appendChild(replyuserheadimg);
     var username = document.createElement("p");
     username.className = username.className + "dialog-username";
+    username.innerHTML = USERNAME;
+    replyuserbox.appendChild(username);
 
     var replymessagebox = document.createElement("div");
-    replymessagebox.className = replymessagebox.className + "dialog-passagebox";
+    replymessagebox.className = replymessagebox.className + "reply-passagebox";
     var message = document.createElement("p");
     message.className = message.className + "dialog-passage";
-    message.innerHTML = message;
+    message.innerHTML = MESSAGE;
     replymessagebox.appendChild(message);
 
     var replycontrolbox = document.createElement("div");
@@ -43,7 +45,7 @@ function generateRplyboxDiv(username, message){
 
     replybox.appendChild(replyuserbox);
     replybox.appendChild(replymessagebox);
-    replybox.appendChild(replycontrolbox);
+    // replybox.appendChild(replycontrolbox);
 
     return replybox;
 }
@@ -87,7 +89,7 @@ Msgbox.prototype.initialize = function(map) {
         REPLYID = this.id;
         var data = loadReply(REPLYID);
         for(item in data){
-            var replydiv = generateRplyboxDiv(data[item].Uname, data[item].Note);
+            var replydiv = generateRplyboxDiv(data[item].Uname, data[item].Content);
             $("#replyScreen")[0].appendChild(replydiv);
         }
     };

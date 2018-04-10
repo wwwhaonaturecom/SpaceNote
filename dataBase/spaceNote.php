@@ -125,7 +125,6 @@ class SpaceNote{
             ) ENGINE = InnoDB;";
             $result = mysqli_query($this->db->conn,$sql);
         }
-        echo 
         $sql = "INSERT INTO `SN_reply_".$reply->replyID."`(`UID`,`Uname`,`Content`,`Time`) 
         VALUES ('".$reply->UID."','".$reply->Uname."','".$reply->Content."','".$reply->Time."');";
         $result = mysqli_query($this->db->conn,$sql);

@@ -2,7 +2,7 @@
     $file = $_FILES['file'];//得到传输的数据
     //得到文件名称
     $name = $file['name'];
-    $username = $_POST['username'] + ".png";
+    $username = $_POST['username'].".png";
     $type = strtolower(substr($name,strrpos($name,'.')+1)); //得到文件类型，并且都转化成小写
     $allow_type = array('jpg','jpeg','gif','png'); //定义允许上传的类型
     //判断文件类型是否被允许上传
@@ -17,8 +17,11 @@
     }
     $upload_path = "/data/wwwroot/www.kgyzone.cn/app/baidu/img/"; //上传文件的存放路径
     //开始移动文件到相应的文件夹
-    if(move_uploaded_file($file['tmp_name'],$upload_path.$username)){
-    echo "Successfully!";
+    if(move_uploaded_file($file['tmp_name'],$upload_path.$_POST['username'].".png")){
+    echo "Successfully!<br>";
+    echo $upload_path.$_POST['username'].".png";
+    echo "<br>";
+    echo $_POST['username'];
     }else{
     echo "Failed!";
     echo $username;

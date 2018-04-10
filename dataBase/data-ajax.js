@@ -99,8 +99,8 @@ function addReply() {
         replyID = REPLYID;
         UID = "1650275";    //test
         Uname = sessionStorage.getItem("Uname");
-        Note = $("replycontent").value;
-
+        Note = $("#replycontent")[0].value;
+        
         if(Note == "") {
             alert("请输入回复");
             return 
@@ -113,9 +113,15 @@ function addReply() {
             async: false,
             data: {"replyID": replyID, "UID": UID, "Uname": Uname,"Note" : Note},
             success: function(result){
-
-
-
+                $("#replycontent")[0].value = "";
+        
+                var data = loadReply(REPLYID);
+                $("#replyScreen")[0].innerHTML = "";
+                
+                for(item in data){
+                    var replydiv = generateRplyboxDiv(data[item].Uname, data[item].Content);
+                    $("#replyScreen")[0].appendChild(replydiv);
+                }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown){
                 alert(XMLHttpRequest.status);
@@ -124,11 +130,7 @@ function addReply() {
             }
         });
 
-        var data = loadReply(REPLYID);
-        for(item in data){
-            var replydiv = generateRplyboxDiv(data[item].Uname, data[item].Note);
-            $("#reply-screen")[0].appendChild(replydiv);
-        }
+
     }
     else if(sessionStorage["loginStatus"] != "true")alert("请先登录");
 }

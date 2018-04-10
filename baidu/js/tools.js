@@ -52,6 +52,7 @@ function hide_all(){
     postWindow.style.visibility = 'hidden';
     userWindow.style.visibility = 'hidden';
     $("#dialogWindow")[0].style.visibility = 'hidden';
+    $("#replyScreen")[0].innerHTML = "";
     
 }
 
