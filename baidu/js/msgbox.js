@@ -21,7 +21,7 @@ function generateRplyboxDiv(USERNAME, MESSAGE){
     headimg.onerror = function(){
         $(this).attr('src', "img/default.jpg");
     };
-    headimg.src = "img/" + username + ".png";
+    headimg.src = "img/" + USERNAME + ".png";
     replyuserheadimg.appendChild(headimg);
     replyuserbox.appendChild(replyuserheadimg);
     var username = document.createElement("p");
