@@ -57,7 +57,8 @@ function setmap(type){
 
 function reply(){
     var id = REPLYID;
-
+    var note = $("replycontent").innerHTML
+    addReply(id, UID, Uname, Note)
 }
 
 ///////////////////////////////////////
@@ -307,7 +308,7 @@ $(function () {
                 var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
                 var itemCoord_B = convertPointG2B(itemCoord_G);
                 var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
-                msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 100, 80, data[item].Note, itemPicSrc, data[item].Uname, data[item].time, data[item].id);
+                msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 100, 80, data[item].Note, itemPicSrc, data[item].Uname, data[item].Time, data[item].ID);
                 map.addOverlay(msgboxHandle[msgboxNum]);
                 msgboxNum++;
             }

@@ -368,7 +368,7 @@ span{
 .dialog-screen{
 	margin-top: 100px;
 	width: 80%;
-	height: 220px;
+	height: 320px;
 	background-color: white;
 	border-radius: 2px;
 }
@@ -422,5 +422,5 @@ span{
 	overflow-x: hidden;
 	overflow-y: scroll;
 	margin: 0px;
-	
+
 }
