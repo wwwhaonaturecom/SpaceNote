@@ -270,7 +270,9 @@ $(function () {
         min: -14,
         max: 0,
         step: 1,
-        slide: function (event, ui) {
+        animate: true,
+        change: function (event, ui) {
+            //ui.value = ui.value / 10;
             if(ui.value == 0)
                 $("#timelineLabel")[0].innerHTML = "时间轴:今天";
             else if(ui.value == -1)
@@ -284,16 +286,17 @@ $(function () {
                 var day = date.getDate();
                 $("#timelineLabel")[0].innerHTML = "时间轴:"+month+"月"+day+"日";
             }
-                        
+            
+        },
+        stop: function (event, ui) {
             //delete message
             if(msgboxNum != 0){
                 map.clearOverlays();
                 msgboxNum = 0; 
                 msgboxHandle = [];
             }
-            
             //load message
-            var range = 1;
+            var range = 0.5;
             var data = loadData(center.Lng, center.Lat, range, ui.value);
             for (item in data) {
                 var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);

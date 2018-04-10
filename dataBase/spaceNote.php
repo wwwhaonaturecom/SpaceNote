@@ -25,6 +25,17 @@ class Item{
     }
 }
 
+class Reply{
+    public $UID,$Uname,$Content,$Time;
+    function __construct($UID,$Uname,$Content,$Time){
+        $this->UID = $UID;
+        $this->Uname = $Uname;
+        $this->Note = $Content;
+        $this->Time = $Time;
+    }
+}
+
+
 class SpaceNote{
     private $db;
     private $dataBuf = array();
@@ -95,6 +106,62 @@ class SpaceNote{
         }else{
             echo "Data save successfully!!!";
         }
+    }
+
+    function saveReply($reply){
+        //查询是否有该表
+        $sql = "SELECT table_name FROM information_schema.TABLES WHERE table_name =`SN_reply_".$reply->ID."`;";
+        $result = mysqli_query($this->db->conn,$sql);
+        if(!$result) {
+            //回复楼层不存在，创建新表
+            $sql = "CREATE TABLE `SN_reply_".$reply->ID."` 
+            ( 
+                `ID` INT NOT NULL , 
+                `UID` CHAR(7) NULL DEFAULT NULL , 
+                `Uname` TINYTEXT NULL DEFAULT NULL , 
+                `Content` TEXT NULL DEFAULT NULL , 
+                `Time` TIMESTAMP NULL DEFAULT NULL , 
+                UNIQUE `ID` (`ID`)
+            ) ENGINE = InnoDB;";
+        }
+
+        $sql = "INSERT INTO `SN_reply_".$reply->ID."`(`UID`,`Uname`,`Content`,`Time`) 
+        VALUES ('".$item->UID."','".$item->Uname."','".$item->Content."','".$item->Time."');";
+        $result = mysqli_query($this->db->conn,$sql);
+        
+        if(!$result){
+            echo "Data save fail:".mysqli_error($this->db->conn);
+        }else{
+            echo "Data save successfully!!!";
+        }
+
+    }
+
+    function loadReply($replyID){
+        $dataBuf = array();
+        $sql = "SELECT * FROM `SN_reply_".$replyID.";";
+
+        $result = mysqli_query($this->db->conn,$sql);
+        if($result == null){
+            echo "error:".mysqli_error($this->db->conn)."<br>";
+        }
+
+        $i = 0;
+        while($row = mysqli_fetch_array($result))
+        {
+            //先将结果放入一维数组中
+            $temp["UID"] = $row['UID'];
+            $temp["Uname"] = $row['Uname'];
+            $temp["Content"] = $row['Content'];
+            $temp["Time"] = $row['Time'];
+            //放入二维数组dataBuf中
+            $dataBuf[$i++] = $temp;
+        }
+        
+        //输出json格式字符串
+        echo json_encode($dataBuf);        
+
+        mysqli_free_result($result);
     }
 
     function __destruct()
