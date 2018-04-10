@@ -416,3 +416,11 @@ span{
 	width: 100px;
 	height: 35px;
 }
+
+.reply-content-box{
+	height: 100px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	margin: 0px;
+	
+}

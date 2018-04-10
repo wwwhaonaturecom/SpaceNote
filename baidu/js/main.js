@@ -57,7 +57,7 @@ function setmap(type){
 
 function reply(){
     var id = REPLYID;
-    
+
 }
 
 ///////////////////////////////////////
@@ -307,7 +307,7 @@ $(function () {
                 var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
                 var itemCoord_B = convertPointG2B(itemCoord_G);
                 var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
-                msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 100, 80, data[item].Note, itemPicSrc, data[item].Uname, data[itme].time, data[time].id);
+                msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 100, 80, data[item].Note, itemPicSrc, data[item].Uname, data[item].time, data[item].id);
                 map.addOverlay(msgboxHandle[msgboxNum]);
                 msgboxNum++;
             }
@@ -322,7 +322,7 @@ for (item in data) {
     var itemCoord_G = new BMap.Point(data[item].Lng, data[item].Lat);
     var itemCoord_B = convertPointG2B(itemCoord_G);
     var itemPicSrc = "img/" + data[item].UID.toString() + ".png";
-    msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 100, 80, data[item].Note, itemPicSrc, data[item].Uname, data[itme].time, data[time].id);
+    msgboxHandle[msgboxNum] = new Msgbox(itemCoord_B, 100, 80, data[item].Note, itemPicSrc, data[item].Uname, data[item].time, data[item].id);
     map.addOverlay(msgboxHandle[msgboxNum]);
     msgboxNum++;
 }
