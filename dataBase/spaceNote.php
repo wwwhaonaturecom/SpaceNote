@@ -1,7 +1,7 @@
 <?php
 
 require_once("DB.php");
-require_once("JBBcode/Parser.php");
+require_once("JBBCode/Parser.php")
 
 class Item{
     public $UID,$Uname,$Note,$Lng,$Lat,$Alt,$Time;
@@ -64,7 +64,7 @@ class SpaceNote{
         $today=date("Y-m-d");
         $select_date = date("Y-m-d",strtotime($today." ".$select." day"));
         $sql = "SELECT * FROM `spaceNoteData_demo` 
-        WHERE Longitude > $lngFrom and Longitude <= $lngTo and Latitude > $latFrom and Latitude <= $latTo and Time LIKE '".$select_date."%';";
+        WHERE Time LIKE '".$select_date."%';";
         //echo $sql;
         //根据经纬度筛选数据
         $result = mysqli_query($this->db->conn,$sql);
