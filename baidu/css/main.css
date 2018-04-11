@@ -114,6 +114,10 @@
 	overflow: hidden;
 }
 
+.passagebox img{
+	width: 100%;
+}
+
 .userbox{
 	margin-top: 10px;
 	margin-left: 10px;
