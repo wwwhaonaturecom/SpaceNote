@@ -1,7 +1,7 @@
 <?php
 
 require_once("DB.php");
-require_once("JBBCode/Parser.php")
+require_once("JBBCode/Parser.php");
 
 class Item{
     public $UID,$Uname,$Note,$Lng,$Lat,$Alt,$Time;
