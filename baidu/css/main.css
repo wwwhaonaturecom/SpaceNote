@@ -479,3 +479,11 @@ span{
 	margin: 10px;
 	margin-top: 0px;
 }
+
+.ofo{
+	border: solid 4px #ffd900;
+	background-image: "img/ofo.jpg";
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	background-size: cover;
+}

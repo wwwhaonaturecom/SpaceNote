@@ -126,6 +126,8 @@ Msgbox.prototype.initialize = function(map) {
 
     var textbox = document.createElement("div");
     textbox.className = textbox.className + " textbox" + " md-shadow-card-restingState";
+    if(this._username == "ofo小黄车")
+        textbox.className = textbox.className + " ofo";
     textbox.style.width = this._width + "px";
     if (this._height != 0)
         textbox.style.height = this._height + "px";
