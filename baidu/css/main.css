@@ -482,7 +482,7 @@ span{
 
 .ofo{
 	border: solid 4px #ffd900;
-	background-image: url('img/ofo.png');
+	background-image: url('../img/ofo.png');
 	background-repeat: no-repeat;
 	background-position: bottom right;
 	background-size: cover;
