@@ -14,7 +14,7 @@
 </p>
 <h1></h1>
 <p><a href="http://www.kgyzone.cn/app/baidu">在线链接</a></p>
-<br>
+<h1></h1>
 <p>预览</p>
 <img src="http://azusebox.moe/wp-content/uploads/2018/09/图片2.png" alt="" style="width:400px;">
 <img src="http://azusebox.moe/wp-content/uploads/2018/09/图片3.png" alt="" style="width:400px;">
@@ -51,7 +51,6 @@
   <li><b>但是这不影响这是个聊天转件，因为最开始就说了这个软件应该是一个开放的设计，店铺可以入驻打广告，摩拜单车可以把单车位置放进来。地理wiki只是一个应用。不影响间迹app的主题</b></li>
   <li>为了一开始推行方便 地理wiki可以先设定为<del>死宅</del>地理wiki</li>
   <li><h2>添加防止数据库注入！！！</h2></li>
-
 </ul>
 </p>
 <img src="http://azusebox.moe/wp-content/uploads/2018/04/S80424-200648.jpg">-->
