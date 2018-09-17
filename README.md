@@ -13,7 +13,7 @@
     后援: cjb
 </p>
 <h1></h1>
-<a href="http://www.kgyzone.cn/app/baidu">在线链接</a>
+<p><a href="http://www.kgyzone.cn/app/baidu">在线链接</a></p>
 <br>
 <p>预览</p>
 <img src="http://azusebox.moe/wp-content/uploads/2018/09/图片2.png" alt="" style="width:400px;">
