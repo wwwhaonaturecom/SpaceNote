@@ -1,4 +1,35 @@
-<h1>SPACE NOTE alpha版制作备忘录</h1>
+
+<h1>间辑</h1>
+<h2>强位置社交应用</h2>
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片1.png" alt="">
+
+<p>
+    由h5制作的基于地理位置的留言社交软件 - 满足人们留下到此一游的欲望<br>
+</p>
+<p>
+    策划：yyy <br>
+    前端：azuse <br>
+    后端：kagaya <br> 
+    文档：scp <br>
+    后援: cjb
+</p>
+<div class="divider"></div>
+<a href="http://www.kgyzone.cn/app/baidu">在线链接</a>
+<p>预览</p>
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片2.png" alt="">
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片3.png" alt="">
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片5.png" alt="">
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片4.png" alt="">
+<div class="divider"></div>
+<label for="">使用百度地图api开发</label>
+
+
+
+
+
+
+
+<!--<h1>SPACE NOTE alpha版制作备忘录</h1>
 <p>
 <ul>
   <li><del>读取服务器消息记录并显示</del>√</li>
@@ -24,4 +55,4 @@
 
 </ul>
 </p>
-<!--<img src="http://azusebox.moe/wp-content/uploads/2018/04/S80424-200648.jpg">-->
+<img src="http://azusebox.moe/wp-content/uploads/2018/04/S80424-200648.jpg">-->
