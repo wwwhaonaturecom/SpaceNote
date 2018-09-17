@@ -24,4 +24,4 @@
 
 </ul>
 </p>
-<img src="http://azusebox.moe/wp-content/uploads/2018/04/S80424-200648.jpg">
+<!--<img src="http://azusebox.moe/wp-content/uploads/2018/04/S80424-200648.jpg">-->
