@@ -1,8 +1,7 @@
 
-<h1>间辑</h1>
-<h2>强位置社交应用</h2>
-<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片1.png" alt="">
+<h1>间辑 - 强位置社交应用</h1>
 
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片1.png" alt="" style="height:200px;">
 <p>
     由h5制作的基于地理位置的留言社交软件 - 满足人们留下到此一游的欲望<br>
 </p>
@@ -16,10 +15,9 @@
 <div class="divider"></div>
 <a href="http://www.kgyzone.cn/app/baidu">在线链接</a>
 <p>预览</p>
-<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片2.png" alt="">
-<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片3.png" alt="">
-<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片5.png" alt="">
-<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片4.png" alt="">
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片2.png" alt="" style="width:400px;">
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片3.png" alt="" style="width:400px;">
+<img src="http://azusebox.moe/wp-content/uploads/2018/09/图片4.png" alt="" style="width:400px;">
 <div class="divider"></div>
 <label for="">使用百度地图api开发</label>
 
