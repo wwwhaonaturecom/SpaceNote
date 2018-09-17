@@ -12,8 +12,9 @@
     文档：scp <br>
     后援: cjb
 </p>
-<div class="divider"></div>
+<h1></h1>
 <a href="http://www.kgyzone.cn/app/baidu">在线链接</a>
+<br>
 <p>预览</p>
 <img src="http://azusebox.moe/wp-content/uploads/2018/09/图片2.png" alt="" style="width:400px;">
 <img src="http://azusebox.moe/wp-content/uploads/2018/09/图片3.png" alt="" style="width:400px;">
